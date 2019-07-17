@@ -1,0 +1,85 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Funcionario.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Funcionario"
+      mc:Ignorable="d" 
+      Height="600"
+      Width="800"
+      
+      Title="LoginPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="Gray"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.425*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" Background="Teal">
+            <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="50">
+                <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Cadastro de Login" />
+            </Viewbox>
+        </Border>
+
+        <DataGrid x:Name="dg_Funcionario" Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="8" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" SelectionChanged="dg_Funcionario_Selected" MouseDoubleClick="dg_Funcionario_MouseDoubleClick" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding IDFuncionarioLogin}"/>
+                <DataGridTextColumn Header="Perfil" Width="*" Binding="{Binding FuncionarioDadosPessoais.Perfil}"/>
+                <DataGridTextColumn Header="Funcionario" Width="*" Binding="{Binding FuncionarioDadosPessoais}"/>
+                <DataGridTextColumn Header="Nome" Width="*" Binding="{Binding Nome}"/>
+                <DataGridTextColumn Header="Senha" Width="*" Binding="{Binding Senha}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Viewbox Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" >
+            <Label Content="Usuário"/>
+        </Viewbox>
+
+        <TextBox x:Name="txt_Usuario" Grid.Row="4" Grid.Column="1" />
+
+        <Viewbox Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" >
+            <Label Content="Senha" />
+        </Viewbox>
+
+        <PasswordBox x:Name="txt_Senha" Grid.Row="4" Grid.Column="4" />
+
+        <Viewbox Grid.Row="4" Grid.Column="6" HorizontalAlignment="Right" >
+            <Label Content="Perfil"  />
+        </Viewbox>
+
+        <ComboBox x:Name="cb_FuncionarioPerfil" Grid.Row="4" Grid.Column="7" />
+
+        <Button x:Name="btn_FuncionarioRemover" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Content="Remover" Style="{StaticResource ButtonRed}" />
+        <Button x:Name="btn_FuncionarioSalvar" Grid.Row="14" Grid.Column="5" Grid.ColumnSpan="3" Content="Salvar" Style="{StaticResource ButtonGreen}" Click="btn_FuncionarioSalvar_Click" />
+
+    </Grid>
+</Page>

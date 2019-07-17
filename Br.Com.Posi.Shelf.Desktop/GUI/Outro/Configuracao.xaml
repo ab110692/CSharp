@@ -1,0 +1,79 @@
+﻿<Window x:Class="Br.Com.Posi.Shelf.Desktop.Outro.Configuracao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.Outro"
+        mc:Ignorable="d"
+        Title="Configuracao" Height="547.436" Width="405.894" WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0">
+                <Label x:Name="label" Content="Banco de Dados" />
+            </Viewbox>
+
+            <TextBox x:Name="bancoDeDadosTextBox" Grid.Row="1" Text="">
+                
+            </TextBox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="2">
+                <Label x:Name="label1" Content="Servidor"/>
+            </Viewbox>
+
+            <TextBox x:Name="servidorTextBox" Grid.Row="3"/>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="4">
+                <Label x:Name="label2" Content="Porta" />
+            </Viewbox>
+
+            <TextBox x:Name="portaTextBox" Grid.Row="5"/>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="6">
+                <Label x:Name="label3" Content="Usuário" />
+            </Viewbox>
+
+            <TextBox x:Name="usuarioTextBox" Grid.Row="7"/>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="8">
+                <Label x:Name="label4" Content="Senha" />
+            </Viewbox>
+
+            <PasswordBox x:Name="senhaTextBox" Grid.Row="9"/>
+
+            <Button x:Name="b_aplicar" Grid.Row="10" Click="b_aplicar_Click" Background="#FF37A437">
+                <Viewbox MaxHeight="32">
+                    <TextBlock Text="Aplicar"/>
+                </Viewbox>
+            </Button>
+
+            <Button x:Name="b_fechar" Grid.Row="11" Background="#FFDA4C4C" Click="b_fechar_Click" >
+                <Viewbox MaxHeight="32">
+                    <TextBlock Text="Fechar" />
+                </Viewbox>
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Window>

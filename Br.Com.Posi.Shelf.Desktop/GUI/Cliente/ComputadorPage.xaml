@@ -1,0 +1,221 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Cliente.ComputadorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Cliente"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      KeepAlive="False"
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="ComputadorPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="2.5"/>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="Margin" Value="2.5"/>
+            </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin" Value="2.5"/>
+            </Style>
+            <Style TargetType="DataGrid">
+                <Setter Property="Margin" Value="2.5"/>
+            </Style>
+          
+            <Style TargetType="Viewbox">
+                <Setter Property="Stretch" Value="Uniform"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.015*"/>
+            <RowDefinition Height="0.035*"/>
+            
+            <RowDefinition Height="0.015*"/>
+            <RowDefinition Height="0.035*"/>
+            
+            <RowDefinition Height="0.015*"/>
+            <RowDefinition Height="0.015*"/>
+
+            <RowDefinition Height="0.035*"/>
+            <RowDefinition Height="0.015*"/>
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" Background="Teal">
+                <Viewbox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="50">
+                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Computadores Cadastrados" >
+                    </TextBlock>
+                </Viewbox>
+            </Border>
+            <DataGrid x:Name="dg_Computadores" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" AutoGenerateColumns="False" ItemsSource="{Binding list}" IsReadOnly="True" CanUserAddRows="False" CanUserResizeColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False"  MouseDoubleClick="dg_Computadores_MouseDoubleClick" >
+            <DataGrid.Columns>
+                    <DataGridTextColumn Header="IDComputador" Width="*" Binding="{Binding IDComputador}" Visibility="Hidden" />
+                    <DataGridTextColumn Header="Terminal" Width="*" Binding="{Binding Nome}" />
+                    <DataGridTextColumn Header="Sistema Operacional" Width="*" Binding="{Binding MSWindows}"  />
+                    <DataGridTextColumn Header="MaCAddress" Width="*" Binding="{Binding MacAddress}" />
+                    <DataGridTextColumn Header="Antivirus" Width="*" Binding="{Binding AntiVirus}" />
+                    <DataGridTextColumn Header="Expiração Antivirus" Width="*" Binding="{Binding DataTerminoAntiVirus}" />
+            </DataGrid.Columns>
+        </DataGrid>            
+        </Grid>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.02*"/>
+                <RowDefinition Height="0.015*"/>
+
+                <RowDefinition Height="0.025*"/>
+                <RowDefinition Height="0.015*"/>
+
+                <RowDefinition Height="0.025*"/>
+                <RowDefinition Height="0.025*"/>
+                <RowDefinition Height="0.025*"/>
+                
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Background="Teal">
+                <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="50">
+                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Cadastro de Computador" >
+                    </TextBlock>
+                </Viewbox>
+            </Border>
+            <Viewbox Grid.Column="0" Grid.Row="1">
+                <TextBlock Text="Computador" />
+                </Viewbox> 
+            <TextBox x:Name="txt_Computador" Grid.Column="0" Grid.Row="2" IsEnabled="False" TextChanged="txt_TextChanged" />
+            <Viewbox Grid.Column="1" Grid.Row="1">
+                <TextBlock Text="Sistema Operacional" />
+            </Viewbox>
+            <ComboBox x:Name="cb_SistemaOperacional" Grid.Column="1" Grid.Row="2" IsEnabled="False" />
+
+            <Viewbox  Grid.Column="2" Grid.Row="1">
+                <TextBlock Text="Licença Sistema Operacional" />
+            </Viewbox>
+            <TextBox x:Name="txt_LicencaOS" Grid.Column="2" Grid.Row="2" IsEnabled="False"  />
+
+            <Viewbox  Grid.Column="0" Grid.Row="3">
+                    <TextBlock Text="MacAddress" />
+                </Viewbox>            
+            <TextBox x:Name="txt_MacAddress" Grid.Column="0" Grid.Row="4" IsEnabled="False"  />            
+            <Viewbox Grid.Column="1" Grid.Row="3">
+                    <TextBlock Text="Antivirus" />
+                </Viewbox>         
+            <ComboBox x:Name="cb_Antivirus" Grid.Column="1" Grid.Row="4" IsEnabled="False" />
+
+            <Viewbox Grid.Column="2" Grid.Row="3">
+                <TextBlock Text="Licença Antivirus" />
+            </Viewbox>
+            <TextBox x:Name="txt_LicencaAntivirus" Grid.Column="2" Grid.Row="4" IsEnabled="False" />
+
+            <Viewbox Grid.Column="3" Grid.Row="1" >
+                <TextBlock  Text="Aquisição Antivirus" />
+            </Viewbox>
+            <Viewbox Grid.Column="3" Grid.Row="2" >
+                <DatePicker x:Name="dt_InicioAntiVirus" Grid.Column="3" Grid.Row="2"  IsEnabled="False" SelectedDate="{x:Static sys:DateTime.Now}" Width="199" />
+            </Viewbox>
+            <Viewbox Grid.Column="3" Grid.Row="3" >
+                <TextBlock  Text="Vencimento Antivirus" />
+            </Viewbox>
+            <Viewbox Grid.Column="3" Grid.Row="4" >
+                <DatePicker x:Name="dt_FinalAntiVirus"  Grid.Column="3" Grid.Row="4"  IsEnabled="False" SelectedDate="{x:Static sys:DateTime.Now}" Width="199" />
+            </Viewbox>
+
+
+            <Button x:Name="btn_CancelarRemover" Content="Cancelar" Style="{StaticResource ButtonRed}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Click="btn_CancelarRemover_Click" />
+            <Button x:Name="btn_NovoAlterar" Content="Novo" Style="{StaticResource ButtonBlue}" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Click="btn_NovoAlterar_Click" />
+            <Button x:Name="btn_SalvarAlterar" Content="Salvar"  Style="{StaticResource ButtonGreen}"  Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Click="btn_SalvarAlterar_Click" Visibility="Collapsed" />
+
+
+        </Grid>
+
+        <Grid Grid.Row="4" Grid.RowSpan="4"  Grid.ColumnSpan="4" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.025*"/>
+
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.025*"/>
+
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.025*"/>
+                <RowDefinition Height="0.025*"/>
+                <RowDefinition Height="0.025*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Background="Teal">
+                <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="50">
+                    <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Cadastro de contratos" >
+                    </TextBlock>
+                </Viewbox>
+            </Border>
+            
+            <Viewbox Grid.Column="0" Grid.Row="1" >
+                <TextBlock  Text="Contratos" />
+            </Viewbox>
+            <DataGrid x:Name="dg_Contrato" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="7" Grid.RowSpan="3" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" MouseDoubleClick="dg_Contrato_MouseDoubleClick" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Dercrição" Width="*" Binding="{Binding Nome}"/>
+                    <DataGridTextColumn Header="Ativo" Width="0.3*" Binding="{Binding Ativo}" />
+                    <DataGridTextColumn Header="IDContrato" Width="*" Binding="{Binding IDContrato}" Visibility="Hidden" />
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+            <Viewbox Grid.Column="0" Grid.Row="5" >
+                <TextBlock  Text="Descrição" />
+            </Viewbox>
+            <TextBox x:Name="txt_DescContrat" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" TextChanged="txt_DescContrat_TextChanged" />
+
+            <Viewbox Grid.Column="2" Grid.Row="5" >
+                <TextBlock  Text="Ativo" />
+            </Viewbox>
+            <ComboBox x:Name="cb_Ativo" Grid.Column="2" Grid.Row="6">
+                <ComboBoxItem>Sim</ComboBoxItem>
+                <ComboBoxItem>Não</ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="btn_NovoContrato" Content="Novo" Style="{StaticResource ButtonBlue}" Grid.Column="2" Grid.Row="8"  Click="btn_NovoContrato_Click" />
+            <Button x:Name="btn_SalvarContrato" Content="Salvar" Style="{StaticResource ButtonGreen}" Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Click="btn_SalvarContrato_Click" Visibility="Collapsed" />
+            <Button x:Name="btn_RemoverContrato" Content="Cancelar" Style="{StaticResource ButtonRed}" Grid.Column="1" Grid.Row="8" Click="btn_RemoverContrato_Click" />
+            <Button x:Name="btn_Voltar" Content="Voltar" Style="{StaticResource ButtonYellow}" Grid.Column="0" Grid.Row="8" Click="btn_Voltar_Click" />
+
+            
+
+        </Grid>
+
+
+        
+    </Grid>
+</Page>

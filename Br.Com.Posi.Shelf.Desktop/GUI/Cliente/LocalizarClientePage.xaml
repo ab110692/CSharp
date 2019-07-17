@@ -1,0 +1,67 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Cliente.LocalizarClientePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Cliente"
+      xmlns:controls ="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Outro"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="LocalizarClientePage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.03*"/>
+            <RowDefinition Height="0.07*"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="0.79*"/>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="0.08*"/>
+            <RowDefinition Height="0.01*"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" >
+            <TextBlock Text="Localizar"/>
+        </Viewbox>
+
+        <TextBox x:Name="txt_Localizar" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+        <Button x:Name="btn_Localizar" Style="{StaticResource ButtonBlue}" Content="Localizar" Grid.Row="1" Grid.Column="3" />
+
+       
+        
+        <DataGrid x:Name="gd_Tabela" Grid.Row="3" Grid.ColumnSpan="4" ItemsSource="{Binding list, IsAsync=True}"
+                  AutoGenerateColumns   ="False" SelectionMode="Single" CanUserAddRows="False"
+                  CanUserDeleteRows     ="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
+                  CanUserResizeRows     ="False" CanUserSortColumns="False" IsReadOnly="True" 
+                  MouseDoubleClick      ="gd_Tabela_MouseDoubleClick" EnableColumnVirtualization="True" EnableRowVirtualization="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.07*" Header="Código" Binding="{Binding Codigo}"/>
+                <DataGridTextColumn Width="0.13*" Header="Rede" Binding="{Binding Rede}"/>
+                <DataGridTextColumn Width="0.3*"  Header="Razao Social" Binding="{Binding RazaoSocial}"/>
+                <DataGridTextColumn Width="0.3*"  Header="Nome Fantasia" Binding="{Binding NomeFantasia}"/>
+                <DataGridTextColumn Width="0.2*"  Header="CPF/CNPJ" Binding="{Binding CpfCnpj}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <Button x:Name="btnNovoComplemento" Style="{StaticResource ButtonGreen}"  Content="Novo Complemento" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Margin="1,1,2,1" Click="btnNovoComplemento_Click"/>
+        <Button x:Name="btnNovoCliente" Style="{StaticResource ButtonGreen}"  Content="Novo Cliente" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5" Margin="2,1,1,1" Click="btn_Novo_Click"/>        
+
+    </Grid>
+</Page>

@@ -1,0 +1,110 @@
+﻿<Window x:Class="Br.Com.Posi.ApagarEmail.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Br.Com.Posi.ApagarEmail.Desktop"
+        xmlns:UI="clr-namespace:Br.Com.Posi.MyUI;assembly=Br.Com.Posi"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid Margin="15">
+
+        <Grid>
+            <Viewbox
+            Name="gridLoading"
+            Visibility="Collapsed">
+                <UI:UserLoading Name="userLoading"/>
+            </Viewbox>
+        </Grid>
+        
+        <Grid
+            Name="gridMain"
+            Visibility="Visible">
+            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.10*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.75*"/>
+        </Grid.ColumnDefinitions>
+
+        
+
+        <Viewbox
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3">
+            <TextBlock                
+                Text="Informar o mês e o ano todos os email até essa data seram apagados"/>
+        </Viewbox>
+
+        <Viewbox
+            Grid.Row="2"
+                Grid.Column="0">
+            <TextBlock                
+                Text="Usuário"/>
+        </Viewbox>
+
+        <TextBox
+            Name="txtUsuario"
+            Grid.Row="2"
+            Grid.Column="2"/>
+
+        <Viewbox
+            Grid.Row="4"
+                Grid.Column="0">
+            <TextBlock                
+                Text="Senha"/>
+        </Viewbox>
+
+        <PasswordBox
+            Name="txtSenha"
+            Grid.Row="4"
+            Grid.Column="2"/>
+
+        <Viewbox
+            Grid.Row="6"
+                Grid.Column="0">
+            <TextBlock                
+                Text="Mês"/>
+        </Viewbox>
+
+        <ComboBox
+            Name="cbMes"
+            Grid.Row="6"
+            Grid.Column="2"/>
+
+        <Viewbox
+            Grid.Row="8"
+                Grid.Column="0">
+            <TextBlock
+                Text="Ano"/>
+        </Viewbox>
+
+        <ComboBox
+            Name="cbAno"
+            Grid.Row="8"
+            Grid.Column="2"/>
+
+        <Button
+            Name="btnRemover"
+            Grid.Row="10"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Content="Remover"/>
+        </Grid>
+    </Grid>
+</Window>

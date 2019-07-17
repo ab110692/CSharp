@@ -1,0 +1,252 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+
+    <SolidColorBrush x:Key="Red" Color="#FFFFA5A5"/>
+    <SolidColorBrush x:Key="RedOver" Color="#FFFF8080"/>
+    <SolidColorBrush x:Key="RedDisable" Color="#FFFFF2F2"/>
+
+    <SolidColorBrush x:Key="Yellow" Color="#FFF7FFA0"/>
+    <SolidColorBrush x:Key="YellowOver" Color="#FFF6FF86"/>
+    <SolidColorBrush x:Key="YellowDisable" Color="#FFFEFFF2"/>
+
+    <SolidColorBrush x:Key="Green" Color="#FF9EFF9E"/>
+    <SolidColorBrush x:Key="GreenOver" Color="#FF63FF63"/>
+    <SolidColorBrush x:Key="GreenDisable" Color="#FFF2FFF2"/>
+
+    <SolidColorBrush x:Key="Blue" Color="#FFAEC4FF"/>
+    <SolidColorBrush x:Key="BlueOver" Color="#FF8FAFFF"/>
+    <SolidColorBrush x:Key="BlueDisable" Color="#FFEBF1FF"/>
+
+    <SolidColorBrush x:Key="FontColorDisable" Color="#FFD4D4D4"/>
+
+    <SolidColorBrush x:Key="Menu1" Color="#FFD2691E"/>
+    <SolidColorBrush x:Key="Menu1Over" Color="#FFE0782E"/>
+    <SolidColorBrush x:Key="Menu1Disable" Color="#FFEE8A44"/>
+
+    <SolidColorBrush x:Key="Menu2" Color="#FF6495ED"/>
+    <SolidColorBrush x:Key="Menu2Over" Color="#FF7AA6F7"/>
+    <SolidColorBrush x:Key="Menu2Disable" Color="#FF94B8F9"/>
+
+    <SolidColorBrush x:Key="Menu3" Color="#FFB8860B"/>
+    <SolidColorBrush x:Key="Menu3Over" Color="#FFC3931D"/>
+    <SolidColorBrush x:Key="Menu3Disable" Color="#FFD1A231"/>
+
+    
+    <Style x:Key="ButtonGreen" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Green}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource GreenOver}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource GreenDisable}"/>
+                <Setter Property="Foreground" Value="{StaticResource FontColorDisable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonRed" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Red}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource RedOver}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource RedDisable}"/>
+                <Setter Property="Foreground" Value="{StaticResource FontColorDisable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonYellow" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Yellow}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource YellowOver}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource YellowDisable}"/>
+                <Setter Property="Foreground" Value="{StaticResource FontColorDisable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonBlue" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Blue}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource BlueOver}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource BlueDisable}"/>
+                <Setter Property="Foreground" Value="{StaticResource FontColorDisable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonMenu1" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Menu1}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource Menu1Over}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource Menu1Disable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonMenu2" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Menu2}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource Menu2Over}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource Menu2Disable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="ButtonMenu3" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Menu3}"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource Menu3Over}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource Menu3Disable}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PoucaAnimacao" TargetType="Button">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" BorderThickness="0" Background="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.8" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DesativarAnimacao" TargetType="Button">
+        <Setter Property="OverridesDefaultStyle" Value="True" />        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" BorderThickness="0" Background="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+
+
+    
+       
+
+
+
+</ResourceDictionary>

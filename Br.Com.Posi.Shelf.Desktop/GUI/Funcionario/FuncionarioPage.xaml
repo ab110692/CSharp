@@ -1,0 +1,273 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Funcionario.FuncionarioPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Funcionario"
+      xmlns:posi="clr-namespace:Br.Com.Posi.MyUI;assembly=Br.Com.Posi"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="FuncionarioPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="btn_Novo" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#0f0b5b" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#130d7c"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="btn_Salvar" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#0b5b3b" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#0d7c50"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="btn_CancelarRemover" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#5b0b25" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+
+                <Setter Property="Template">
+
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#7a0e32"/>
+                    </Trigger>
+
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="gd_Funcionario" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" Background="#939393" >
+
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.425*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.05*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+
+        
+
+        <DataGrid x:Name="dg_Funcionario" Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="8" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" SelectionChanged="dg_Funcionario_Selected" MouseDoubleClick="dg_Funcionario_MouseDoubleClick" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding IDFuncionario}"/>
+                <DataGridTextColumn Header="Nome" Width="*" Binding="{Binding NomeCompleto}"/>
+                <DataGridTextColumn Header="Cargo" Width="*" Binding="{Binding Perfil}"/>
+                <DataGridTextColumn Header="Setor" Width="*" Binding="{Binding Perfil.Setor}"/>
+                <DataGridTextColumn Header="RG" Width="*" Binding="{Binding RG}"/>
+                <DataGridTextColumn Header="CPF" Width="*" Binding="{Binding CPF}"/>
+                <DataGridTextColumn Header="Telefone" Width="*" Binding="{Binding Telefone}"/>
+                <DataGridTextColumn Header="PIS" Width="*" Binding="{Binding Pis}"/>
+                <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="CEP" Width="*" Binding="{Binding CEP}"/>
+                <DataGridTextColumn Header="Endereço" Width="*" Binding="{Binding Endereco}"/>
+                <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Bairro}"/>
+                <DataGridTextColumn Header="Numero" Width="*" Binding="{Binding Numero}"/>
+                <DataGridTextColumn Header="Cidade" Width="*" Binding="{Binding Cidade}"/>
+                <DataGridTextColumn Header="Estado" Width="*" Binding="{Binding Estado}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid x:Name="gd_F" Grid.Row="3" Grid.RowSpan="13" Grid.Column="0" Grid.ColumnSpan="8" >
+            <Grid.RowDefinitions>                
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.015*"/>
+                <RowDefinition Height="0.04*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.05*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" >
+                <Label Content="Nome"  />
+            </Viewbox>
+
+            <TextBox x:Name="txt_NomeCompleto" Grid.Row="0" Grid.Column="1" />
+
+            <Viewbox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" >
+                <Label Content="RG"/>
+            </Viewbox>
+
+            <TextBox x:Name="txt_Rg" Grid.Row="0" Grid.Column="4"/>
+
+            <Viewbox Grid.Row="0" Grid.Column="6" HorizontalAlignment="Right" >
+                <Label Content="CPF"/>
+            </Viewbox>
+
+            <posi:MaskedTextBox Mask="CPF" x:Name="txt_CPF" Grid.Row="0" Grid.Column="7"/>
+
+            <Viewbox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" >
+                <Label Content="Telefone"/>
+            </Viewbox>
+
+            <posi:MaskedTextBox Mask="TELEFONE" x:Name="txt_Celular" Grid.Row="2" Grid.Column="1"/>
+
+            <Viewbox Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" >
+                <Label Content="PIS"/>
+            </Viewbox>
+
+            <posi:MaskedTextBox Mask="PIS" x:Name="txt_Pis" Grid.Row="2" Grid.Column="4" Text="20781640223" />
+
+            <Viewbox Grid.Row="2" Grid.Column="6" HorizontalAlignment="Right" >
+                <Label Content="Email"/>
+            </Viewbox>
+
+            <posi:MaskedTextBox Mask="EMAIL" x:Name="txt_Email" Grid.Row="2" Grid.Column="7"/>
+
+            <Viewbox Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" >
+                <Label Content="CEP"/>
+            </Viewbox>
+
+            <posi:MaskedTextBox Mask="CEP" x:Name="txt_CEP" Grid.Row="4" Grid.Column="1"/>
+
+            <Viewbox Grid.Row="4" Grid.Column="3" HorizontalAlignment="Right" >
+                <Label Content="Endereço"/>
+            </Viewbox>
+
+            <TextBox x:Name="txt_Endereco" Grid.Row="4" Grid.Column="4"/>
+
+            <Viewbox Grid.Row="4" Grid.Column="6" HorizontalAlignment="Right" >
+                <Label Content="Bairro"/>
+            </Viewbox>
+
+            <TextBox x:Name="txt_Bairro" Grid.Row="4" Grid.Column="7"/>
+
+            <Viewbox Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" >
+                <Label Content="Número"/>
+            </Viewbox>
+
+            <posi:MaskedTextBox Mask="NUMERO" x:Name="txt_Numero" Grid.Row="6" Grid.Column="1"/>
+
+            <Viewbox Grid.Row="6" Grid.Column="3" HorizontalAlignment="Right" >
+                <Label Content="Cidade"/>
+            </Viewbox>
+
+            <TextBox x:Name="txt_Cidade" Grid.Row="6" Grid.Column="4"/>
+
+            <Viewbox Grid.Row="6" Grid.Column="6" HorizontalAlignment="Right" >
+                <Label Content="Estado"/>
+            </Viewbox>
+
+            <ComboBox x:Name="cb_Estado" Grid.Row="6" Grid.Column="7"/>
+            <Viewbox Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" >
+                <Label Content="Setor"/>
+            </Viewbox>
+            <ComboBox x:Name="cb_Setor" Grid.Row="8" Grid.Column="1" SelectionChanged="cb_Setor_Selected"/>
+            
+            
+            <Viewbox Grid.Row="8" Grid.Column="3" HorizontalAlignment="Right" >
+                <Label Content="Cargo"/>
+            </Viewbox>
+            <ComboBox x:Name="cb_Perfil" Grid.Row="8" Grid.Column="4"/>
+
+            <Button x:Name="btn_FuncionarioRemover" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Content="Remover" Style="{StaticResource btn_CancelarRemover}" Click="btn_FuncionarioRemover_Click"/>
+            <Button x:Name="btn_FuncionarioSalvar" Grid.Row="10" Grid.Column="5" Grid.ColumnSpan="3" Content="Salvar" Style="{StaticResource btn_Salvar}" Click="btn_FuncionarioSalvar_Click" />
+
+        </Grid>
+        <Button  Grid.Row="16" Grid.Column="4" Click="Button_Click"  />
+        <Frame x:Name="f_Login" Grid.Row="0" Grid.RowSpan="17" Grid.Column="0" Grid.ColumnSpan="8" />
+        <!--Dados Pessoais-->
+         </Grid>
+</Page>

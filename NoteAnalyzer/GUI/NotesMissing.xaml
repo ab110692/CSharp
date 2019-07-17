@@ -1,0 +1,26 @@
+﻿<Window x:Class="NoteAnalyzer.GUI.NotesMissing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NoteAnalyzer.GUI"
+        mc:Ignorable="d"
+        Title="NotesMissing" Height="600" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="FaltantesLabel" Content="Notas faltantes:"/>
+        <TextBox Grid.Row="1" x:Name="NotesFaltantesTextBox" TextWrapping="Wrap" AcceptsReturn="True" />
+        <Label Grid.Row="2" x:Name="InutilizadasLabel" Content="Notas Inutilizadas:"/>
+        <TextBox Grid.Row="3" x:Name="NotesInutilizadoTextBox" TextWrapping="Wrap" AcceptsReturn="True"/>
+        <Label Grid.Row="4" x:Name="CanceladasLabel" Content="Notas Canceladas:"/>
+        <TextBox Grid.Row="5" x:Name="NotasCanceladasTextBox" TextWrapping="Wrap" AcceptsReturn="True"/>
+    </Grid>
+</Window>
+

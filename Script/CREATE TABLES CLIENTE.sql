@@ -1,0 +1,125 @@
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'Shelf')
+BEGIN
+CREATE DATABASE Shelf
+END
+
+GO
+
+USE Shelf
+
+GO
+
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'Rede')
+BEGIN
+DROP TABLE Rede
+END
+
+GO
+
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'Cliente')
+BEGIN
+DROP TABLE Cliente
+END
+
+GO
+
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'Telefone')
+BEGIN
+DROP TABLE Telefone
+END
+
+GO
+
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'Contrato')
+BEGIN
+DROP TABLE Contrato
+END
+
+GO
+
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'MSWindows')
+BEGIN
+DROP TABLE MSWindows
+END
+
+GO
+
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'AntiVirus')
+BEGIN
+DROP TABLE AntiVirus
+END
+
+GO
+
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'Computador')
+BEGIN
+DROP TABLE Computador
+END
+
+GO
+
+CREATE TABLE Rede
+(
+IDRede BIGINT IDENTITY(1,1) PRIMARY KEY,
+Codigo BIGINT,
+Nome VARCHAR(80)
+)
+
+CREATE TABLE Cliente
+(
+IDCliente BIGINT IDENTITY(1,1) PRIMARY KEY,
+Rede_ID BIGINT FOREIGN KEY
+REFERENCES Rede(IDRede),
+Codigo BIGINT UNIQUE,
+Nome VARCHAR(80),
+Apelido VARCHAR(80),
+CPFCNPJ VARCHAR(18),
+)
+
+CREATE TABLE Telefone
+(
+IDTelefone BIGINT IDENTITY(1,1) PRIMARY KEY,
+Numero VARCHAR(14),
+Nome VARCHAR(80),
+Cargo VARCHAR(80),
+Cliente_ID BIGINT FOREIGN KEY
+REFERENCES Cliente(IDCliente)
+)
+
+CREATE TABLE Contrato
+(
+IDContrato BIGINT IDENTITY(1,1) PRIMARY KEY,
+Nome VARCHAR(80),
+Ativo BIT,
+Cliente_ID BIGINT FOREIGN KEY
+REFERENCES Cliente(IDCliente)
+)
+
+CREATE TABLE MSWindows
+(
+IDWindows BIGINT IDENTITY(1,1) PRIMARY KEY,
+Nome VARCHAR(80)
+)
+
+CREATE TABLE AntiVirus
+(
+IDAntiVirus BIGINT IDENTITY(1,1) PRIMARY KEY,
+Nome VARCHAR(80)
+)
+
+CREATE TABLE Computador
+(
+IDComputador BIGINT IDENTITY(1,1) PRIMARY KEY,
+Cliente_ID BIGINT FOREIGN KEY
+REFERENCES Cliente(IDCliente),
+Nome VARCHAR(40),
+MSWindows_ID BIGINT FOREIGN KEY
+REFERENCES MSWindows(IDWindows),
+LicencaWindows VARCHAR(29),
+AntiVirus_ID BIGINT FOREIGN KEY
+REFERENCES AntiVirus(IDAntiVirus),
+LicencaAntiVirus VARCHAR(29),
+MacAddress VARCHAR(17),
+DataAquisicaoAntiVirus DATETIME,
+DataTerminoAntiVirus DATETIME
+)

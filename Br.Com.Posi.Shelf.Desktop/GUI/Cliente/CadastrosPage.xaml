@@ -1,0 +1,450 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Cliente.CadastrosPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Cliente"
+      xmlns:posi="clr-namespace:Br.Com.Posi.MyUI;assembly=Br.Com.Posi"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="CadastrosPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+                
+                
+            </ResourceDictionary.MergedDictionaries>
+            <!--Animação do botão REDE-->
+            <Storyboard x:Key="fechaRede">
+                <DoubleAnimation
+                                Storyboard.TargetName="gd_Rede"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="0" To="-200"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="abreRede">
+                <DoubleAnimation
+                                Storyboard.TargetName="gd_Rede"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="-200" To="0"
+                                Duration="0:0:0.3"/>
+            </Storyboard>          
+            <!--Animação do botão REDE-->
+            
+            <!--Animação do botão OS-->
+            <Storyboard x:Key="abreOS">
+                <DoubleAnimation
+                                Storyboard.TargetName="gd_SistemaO"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="-250" To="0"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="fechaOS">
+                <DoubleAnimation
+                                Storyboard.TargetName="gd_SistemaO"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="0" To="-200"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="desceOS">
+                <DoubleAnimation
+                                Storyboard.TargetName="cv_OS"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="0" To="200"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="sobeOS">
+                <DoubleAnimation
+                                Storyboard.TargetName="cv_OS"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="222" To="0"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <!--Animação do botão OS-->
+
+            <!--Animação do botão Antivirus-->
+            <Storyboard x:Key="desceAnti">
+                <DoubleAnimation
+                                Storyboard.TargetName="cv_Antivirus"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="30" To="230"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="sobeAnti">
+                <DoubleAnimation
+                                Storyboard.TargetName="cv_Antivirus"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="230" To="30"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="abreAnt">
+                <DoubleAnimation
+                                Storyboard.TargetName="gd_Ant"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="-250" To="0"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="fechaAnt">
+                <DoubleAnimation
+                                Storyboard.TargetName="gd_Ant"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="0" To="-200"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <!--Animação do botão Antivirus-->
+
+
+
+
+
+            <Style x:Key="btn_MenuRede" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#442654" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="{Binding ElementName= gd_Cadastros, Path=ActualWidth}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+
+                            <Border Background="{TemplateBinding Background}" Padding="0,0,200,0" BorderBrush="Transparent" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#65387c"/>
+                    </Trigger>
+                    
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="btn_Menu" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#442654" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="{Binding ElementName= gd_Cadastros, Path=ActualWidth}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#65387c"/>                      
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        
+            <Style x:Key="btn_Novo" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#0f0b5b" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#130d7c"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+            <Style x:Key="btn_Salvar" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#0b5b3b" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#0d7c50"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="btn_CancelarRemover" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#5b0b25" />
+                <Setter Property="Foreground" Value="White"/>                
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+                
+                <Setter Property="Template">
+                    
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#7a0e32"/>
+                    </Trigger>
+                    
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="dt" TargetType="{x:Type DataGrid}">
+                
+                
+            </Style>
+        </ResourceDictionary>
+
+    </Page.Resources>
+
+
+
+
+    <Grid x:Name="gd_Cadastros" Margin="4.5" Background="#939393"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.8*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.16*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.16*"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.16*"/>
+
+
+                <RowDefinition Height="0.04*"/>
+            </Grid.RowDefinitions>
+
+
+        
+        <Canvas  Grid.Row="0" Grid.RowSpan="5" ClipToBounds="True" Grid.Column="0" Grid.ColumnSpan="4"
+                    Height="{Binding ElementName=gd_Cadastros, Path=ActualHeight}"
+                            Width="{Binding ElementName=gd_Cadastros, Path=ActualWidth}">
+            <Button  x:Name="btn_Voltar" Style="{StaticResource btn_Menu}" Height="{Binding ElementName=btn_Rede, Path=ActualHeight}" Width="100" Content="Voltar" Click="btn_Voltar_Click"/>
+            <Button x:Name="btn_Rede" Content="Rede" Canvas.Right="0" HorizontalContentAlignment="Left"
+                    Grid.ColumnSpan="7" Margin="0,0,-100,0" Style="{StaticResource btn_MenuRede}"
+                   Click="btn_Rede_Click"/>
+            <Canvas x:Name="cv_Rede"  Visibility="Visible" Canvas.Top="30" ClipToBounds="True" Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4"
+                        Height="{Binding ElementName=gd_Cadastros, Path=ActualHeight}"
+                       Width="{Binding ElementName=btn_Rede, Path=ActualWidth}" >
+            
+
+            <Grid Visibility="Visible" Canvas.Top="-250"  x:Name="gd_Rede"  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="4"  
+                  Width="{Binding ElementName=gd_Cadastros, Path=ActualWidth}" Height="190" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.06*"/>
+                        <RowDefinition Height="0.05*"/>
+                        <RowDefinition Height="0.03*"/>
+                        <RowDefinition Height="0.03*"/>
+                        <RowDefinition Height="0.03*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <DataGrid x:Name="dg_Rede" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding list}" 
+                  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True"
+                  SelectionChanged="dg_Rede_SelectionChanged"
+                              Style="{StaticResource dt}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0.1*" Header="Código" Binding="{Binding Codigo}"/>
+                            <DataGridTextColumn Width="0.9*" Header="Nome" Binding="{Binding Nome}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                    <Viewbox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Stretch="Uniform" >
+                        <TextBlock Text="  Código" />
+                    </Viewbox>
+                    <Viewbox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Stretch="Uniform" >
+                        <TextBlock Text="Nome" />
+                    </Viewbox>
+
+                    <posi:MaskedTextBox x:Name="txt_Codigo" Grid.Row="3" Grid.Column="0" Mask="NUMERO" Margin="2.5" IsEnabled="false" TextChanged="txt_Codigo_TextChanged"/>
+                    <TextBox x:Name="txt_Nome" Grid.Row="3" Grid.Column="1" IsEnabled="false" Margin="2.5"  />
+
+                    <Button x:Name="btn_RemoverRede" Grid.Column="0" Content="Remover" Style="{StaticResource btn_CancelarRemover}" Grid.Row="5" Click="btn_RemoverRede_Click" />
+                    <Button x:Name="btn_NovaRede"  Grid.Column="1" Content="Novo" Style="{StaticResource btn_Novo}" Grid.Row="5" Click="btn_NovaRede_Click"/>
+                    <Button x:Name="btn_AdicionarRede"  Grid.Column="1" Content="Salvar" Style="{StaticResource btn_Salvar}" Grid.Row="5" Click="btn_AdicionarRede_Click" Visibility="Collapsed"/>
+
+                </Grid>
+
+                <Canvas x:Name="cv_OS" ClipToBounds="True" Canvas.Top="0"  Grid.Row="1" Grid.RowSpan="10" Grid.Column="0" Grid.ColumnSpan="4"
+                        Height="{Binding ElementName=gd_Cadastros, Path=ActualHeight}"
+                            Width="{Binding ElementName=gd_Cadastros, Path=ActualWidth}" >
+
+                    <Button x:Name="btn_OS" Canvas.Top="0" Canvas.Right="0"  Content="Sistema Operacional"
+                            Grid.ColumnSpan="7" Style="{StaticResource btn_Menu}" Click="btn_OS_Click"
+                            />
+
+                    <Canvas Visibility="Visible" Canvas.Top="30" ClipToBounds="True" Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4"
+                        Height="{Binding ElementName=cv_Rede, Path=ActualHeight}"
+                       Width="{Binding ElementName=gd_Cadastros, Path=ActualWidth}" >
+
+                        <Grid Visibility="Visible" Canvas.Top="-250" x:Name="gd_SistemaO"
+                          Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
+                          Width="{Binding ElementName=gd_Cadastros, Path=ActualWidth}" Height="190">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="0.04*"/>
+                                <RowDefinition Height="0.03*"/>
+                            </Grid.RowDefinitions>
+
+                            <DataGrid x:Name="gd_SistemaOperacional" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"  ItemsSource="{Binding list}" 
+                  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True"
+                  SelectionChanged="gd_SistemaOperacional_SelectionChanged" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="0.7*" Header="Sistema Operacional" Binding="{Binding Nome}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Visibility="Visible" x:Name="gd_NovoSO" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="4" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.03*"/>
+                                    <RowDefinition Height="0.04*"/>
+                                    <RowDefinition Height="0.04*"/>
+                                </Grid.RowDefinitions>
+                                <Viewbox Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="4" HorizontalAlignment="Left" Stretch="Uniform" >
+                                    <TextBlock Text=" Sistema Operacional" />
+                                </Viewbox>
+
+                                <TextBox x:Name="txt_SistemaOperacional" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="false" TextChanged="txt_SistemaOperacional_TextChanged" />
+
+                                <Button x:Name="btn_RemoverSistemaOperacional" Grid.Row="10" Grid.Column="0"  Content="Remover"  Style="{StaticResource btn_CancelarRemover}" Click="btn_RemoverSistemaOperacional_Click"/>
+                                <Button x:Name="btn_NovoSistemaOperacional" Grid.Row="10" Grid.Column="1"  Content="Novo"  Style="{StaticResource btn_Novo}"  Click="btn_NovoSistemaOperacional_Click"/>
+                                <Button x:Name="btn_AdicionarSistemaOperacional" Grid.Row="10" Grid.Column="1"  Content="Salvar" Style="{StaticResource btn_Salvar}" Click="btn_AdicionarSistemaOperacional_Click" Visibility="Collapsed"/>
+                            </Grid>
+                        </Grid>
+                    </Canvas>
+                    <Canvas x:Name="cv_Antivirus" Canvas.Top="30" ClipToBounds="True" 
+                        Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4" 
+                        Height="{Binding ElementName=gd_Cadastros, Path=ActualHeight}"
+                            Width="{Binding ElementName=gd_Cadastros, Path=ActualWidth}">
+
+                        <Button x:Name="btn_Antivirus"  Canvas.Top="0" Content="Antivirus"  Grid.Row="0" Grid.Column="0" 
+                            Grid.ColumnSpan="7" Style="{StaticResource btn_Menu}"
+                            Click="btn_Antivirus_Click"/>
+
+                        <Canvas Visibility="Visible" x:Name="cv_Antivi" ClipToBounds="True" Canvas.Top="30" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" 
+                            Height="{Binding ElementName=gd_Cadastros, Path=ActualHeight}"
+                            Width="{Binding ElementName=gd_Cadastros, Path=ActualWidth}">
+
+                            <Grid Visibility="Visible" Canvas.Top="-250" x:Name="gd_Ant" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4"  
+               Height="{Binding ElementName=gd_Rede, Path=ActualHeight}"
+               Width="{Binding ElementName=gd_Rede, Path=ActualWidth}"
+              >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.01*"/>
+                                    <RowDefinition Height="0.04*"/>
+                                    <RowDefinition Height="0.03*"/>
+                                </Grid.RowDefinitions>
+
+                                <DataGrid x:Name="gd_Antivirus" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding list}" 
+                  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True"
+                  SelectionChanged="gd_Antivirus_SelectionChanged" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="0.7*" Header="Antivirus" Binding="{Binding Nome}" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Grid Visibility="Visible" x:Name="gd_NovoAntivirus" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.03*"/>
+                                        <RowDefinition Height="0.04*"/>
+                                        <RowDefinition Height="0.05*"/>
+                                    </Grid.RowDefinitions>
+                                    <Viewbox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Stretch="Uniform" >
+                                        <TextBlock Text="  Antivirus" />
+                                    </Viewbox>
+
+                                    <TextBox x:Name="txt_Antivirus" Grid.Row="1" Grid.Column="0" IsEnabled="false" Grid.ColumnSpan="2" TextChanged="txt_Antivirus_TextChanged" />
+
+                                    <Button x:Name="btn_RemoverAntivirus" Grid.Row="2" Grid.Column="0" Content="Remover" Style="{StaticResource btn_CancelarRemover}"  Click="btn_RemoverAntivirus_Click"/>
+                                    <Button x:Name="btn_NovoAntivirus" Grid.Row="2" Grid.Column="1" Content="Novo"  Style="{StaticResource btn_Novo}" Click="btn_NovoAntivirus_Click"/>
+                                    <Button x:Name="btn_AdicionarAntivirus" Grid.Row="2" Grid.Column="1" Visibility="Collapsed" Content="Salvar" Style="{StaticResource btn_Salvar}" Click="btn_AdicionarAntivirus_Click"/>
+                                </Grid>
+                            </Grid>
+
+                        </Canvas>
+                    </Canvas>
+
+                </Canvas>
+            </Canvas>
+
+                
+            
+        </Canvas>
+                    
+            
+            
+
+        </Grid>
+    
+</Page>

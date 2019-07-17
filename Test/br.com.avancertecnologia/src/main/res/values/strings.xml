@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Idle Drink</string>
+    <string name="title_activity_main" translatable="false">Idle Drink</string>
+    <string name="impulso" translatable="false">Impulse</string>
+    <string name="nome" translatable="false">Name</string>
+    <string name="nome_personagem" translatable="false">Character\'s Name</string>
+    <string name="criar" translatable="false">Create</string>
+    <string name="vender" translatable="false">To sell</string>
+    <string name="empresa" translatable="false">Company</string>
+    <string name="empresario" translatable="false">Businessman</string>
+    <string name="melhoria" translatable="false">Improvement</string>
+    <string name="nivel" translatable="false">Level</string>
+    <string name="valor" translatable="false">Value</string>
+    <string name="clique_vender_agua" translatable="false">Click to sell water</string>
+    <string name="vender_agua" translatable="false">Sell ​​water</string>
+    <string name="adicionar_gelo" translatable="false">Add Ice</string>
+    <string name="adicionar_limao" translatable="false">Add Lemon</string>
+    <string name="adicionar_laranja" translatable="false">Add Orange</string>
+    <string name="barraca_madeira" translatable="false">Wooden tent</string>
+    <string name="barraca_elegante" translatable="false">Stylish Tent</string>
+    <string name="loja_pequena" translatable="false">Small Store</string>
+    <string name="loja_media" translatable="false">Shop Medium</string>
+    <string name="loja_grande" translatable="false">Large Store</string>
+    <string name="empresa_pequena" translatable="false">Small company</string>
+    <string name="empresa_media" translatable="false">Company Average</string>
+    <string name="empresa_grande" translatable="false">Large Company</string>
+    <string name="campo_nao_pode_ser_vazio" translatable="false">The field can not be empty!</string>
+    <string name="saldo_insuficiente" translatable="false">Insufficient balance</string>
+    <string name="melhorar_agua" translatable="false">Improve Water</string>
+    <string name="tarefa">Assignment</string>
+    <string name="max">max</string>
+    <string name="tempo">Time</string>
+    <string name="progresso">Progress</string>
+    <string name="pegar">Take</string>
+    <string name="conquista">Conquest</string>
+    <string name="obtido">Obtained</string>
+    <string name="resetar">Reset</string>
+    <string name="bonus">Bonus</string>
+    <string name="evoluir">Evolve</string>
+    <string name="funcionario">Official</string>
+    <string name="agua_da_fonte">Water Fountain</string>
+    <string name="agua_maravilhosa">Wonderful water</string>
+    <string name="melhor_agua_cidade">The best water in town</string>
+    <string name="melhor_agua_mundo">The best water in the world</string>
+    <string name="gelo_gelado">Cold ice</string>
+    <string name="cubo_perfeito">Perfect Cube</string>
+    <string name="gelo_impressionante">Awesome Ice</string>
+    <string name="o_melhor_gelo_do_mundo">The best ice in the world</string>
+    <string name="limao_fresco">Fresh Lemon</string>
+    <string name="limao_delicioso">Delicious lemon</string>
+    <string name="limao_irresistivel">Irresistible Lemon</string>
+    <string name="o_melhor_limao_do_mundo">The best lemon in the world</string>
+    <string name="laranja_fresca">Fresh orange</string>
+    <string name="laranja_deliciosa">Delicious orange</string>
+    <string name="laranja_irresistivel">Irresistible Orange</string>
+    <string name="a_melhor_laranja_do_mundo">The best orange in the world</string>
+    <string name="quantidade_click">Quantity of click</string>
+    <string name="total_dinheiro_obtido">Total money obtained</string>
+    <string name="total_diamante_obtido">Total diamond obtained</string>
+    <string name="total_diamante_resete">Total diamond hair reset</string>
+    <string name="personagem">Personagem</string>
+
+
+    <string name="funcionario_barraca_madeira" translatable="false">Eder</string>
+    <string name="funcionario_barraca_elegante" translatable="false">Michele</string>
+    <string name="funcionario_loja_pequena" translatable="false">Michael</string>
+    <string name="funcionario_loja_media" translatable="false">Rois</string>
+    <string name="funcionario_loja_grande" translatable="false">Mario</string>
+    <string name="funcionario_empresa_pequena" translatable="false">Thais</string>
+    <string name="funcionario_empresa_media" translatable="false">Ronaldo</string>
+    <string name="funcionario_empresa_grande" translatable="false">Ellen</string>
+</resources>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BFB2C5F5-DB3D-4DAC-8209-51A3EB480729}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Br.Com.Posi.Shelf</RootNamespace>
+    <AssemblyName>Br.Com.Posi.Shelf</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\AplicativoDAOImpl.cs" />
+    <Compile Include="DAO\AtendimentoDAOImpl.cs" />
+    <Compile Include="DAO\AtendimentoDetalhadoDAOImpl.cs" />
+    <Compile Include="DAO\CategoriaDAOImpl.cs" />
+    <Compile Include="DAO\FuncionarioDadosPessoaisDAOImpl.cs" />
+    <Compile Include="DAO\IAplicativoDAO.cs" />
+    <Compile Include="DAO\IAtendimentoDAO.cs" />
+    <Compile Include="DAO\IAtendimentoDetalhadoDAO.cs" />
+    <Compile Include="DAO\ICategoriaDAO.cs" />
+    <Compile Include="DAO\IFuncionarioDadosPessoaisDAO.cs" />
+    <Compile Include="DAO\IItemDAO.cs" />
+    <Compile Include="DAO\IProblemaDAO.cs" />
+    <Compile Include="DAO\IProtocoloDAO.cs" />
+    <Compile Include="DAO\ISubCategoriaDAO.cs" />
+    <Compile Include="DAO\ItemDAOImpl.cs" />
+    <Compile Include="DAO\IVersaoDAO.cs" />
+    <Compile Include="DAO\ProblemaDAOImpl.cs" />
+    <Compile Include="DAO\ProtocoloDAOImpl.cs" />
+    <Compile Include="DAO\SubCategoriaDAOImpl.cs" />
+    <Compile Include="DAO\VersaoDAOImpl.cs" />
+    <Compile Include="DTO\DTOTabelaAtendimento.cs" />
+    <Compile Include="DTO\DTOTabelaCategoria.cs" />
+    <Compile Include="Enums\TipoProtocolo.cs" />
+    <Compile Include="Model\Aplicativo.cs" />
+    <Compile Include="Model\Atendimento.cs" />
+    <Compile Include="Model\AtendimentoDetalhado.cs" />
+    <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\FuncionarioDadosPessoais.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Problema.cs" />
+    <Compile Include="Model\Protocolo.cs" />
+    <Compile Include="Model\SubCategoria.cs" />
+    <Compile Include="Model\Versao.cs" />
+    <Compile Include="DAO\AntiVirusDAOImpl.cs" />
+    <Compile Include="DAO\ClienteDAOImpl.cs" />
+    <Compile Include="DAO\ComputadorDAOImpl.cs" />
+    <Compile Include="DAO\ContratoDAOImpl.cs" />
+    <Compile Include="DAO\DAOFactory.cs" />
+    <Compile Include="DAO\FuncionarioDAOImpl.cs" />
+    <Compile Include="DAO\IAntiVirusDAO.cs" />
+    <Compile Include="DAO\IClienteDAO.cs" />
+    <Compile Include="DAO\IComputadorDAO.cs" />
+    <Compile Include="DAO\IContratoDAO.cs" />
+    <Compile Include="DAO\IFuncionarioDAO.cs" />
+    <Compile Include="DAO\IMSWindowsDAO.cs" />
+    <Compile Include="DAO\IPerfilDAO.cs" />
+    <Compile Include="DAO\IRedeDAO.cs" />
+    <Compile Include="DAO\ISetorDAO.cs" />
+    <Compile Include="DAO\ITelefoneDAO.cs" />
+    <Compile Include="DAO\MSWindowsDAOImpl.cs" />
+    <Compile Include="DAO\PerfilDAOImpl.cs" />
+    <Compile Include="DAO\RedeDAOImpl.cs" />
+    <Compile Include="DAO\SetorDAOImpl.cs" />
+    <Compile Include="DAO\TelefoneDAOImpl.cs" />
+    <Compile Include="Enums\Privilegio.cs" />
+    <Compile Include="Enums\StatusAtendimento.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\AntiVirus.cs" />
+    <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\Computador.cs" />
+    <Compile Include="Model\Contrato.cs" />
+    <Compile Include="Model\Funcionario.cs" />
+    <Compile Include="Model\MSWindows.cs" />
+    <Compile Include="Model\Perfil.cs" />
+    <Compile Include="Model\Rede.cs" />
+    <Compile Include="Model\Setor.cs" />
+    <Compile Include="Model\Telefone.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Br.Com.Posi.Connection\Br.Com.Posi.Connection.csproj">
+      <Project>{9c333c5c-0d36-46a1-ba93-b3e0c9fcc734}</Project>
+      <Name>Br.Com.Posi.Connection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Br.Com.Posi\Br.Com.Posi.csproj">
+      <Project>{84562247-be73-4415-aa34-33ccebcb2470}</Project>
+      <Name>Br.Com.Posi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

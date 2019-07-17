@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "89288839592",
+    "firebase_url": "https://idle-drink-30228541.firebaseio.com",
+    "project_id": "idle-drink-30228541",
+    "storage_bucket": "idle-drink-30228541.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89288839592:android:107c100d2eb95126",
+        "android_client_info": {
+          "package_name": "br.com.avancertecnologia.idledrink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89288839592-fjo417i5sg1ugv3rhet05roah92881cg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.avancertecnologia.idledrink",
+            "certificate_hash": "c17d2dfd52ab1bb9b161afa67cab0a35ac92fbd8"
+          }
+        },
+        {
+          "client_id": "89288839592-sjmpsh3t2rj0nr5sopvmh53nafbt04ul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbrUQ8N5DNg6JObguAfXDWqb40N0bDYew"
+        },
+        {
+          "current_key": "AIzaSyCbrUQ8N5DNg6JObguAfXDWqb40N0bDYew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89288839592-sjmpsh3t2rj0nr5sopvmh53nafbt04ul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

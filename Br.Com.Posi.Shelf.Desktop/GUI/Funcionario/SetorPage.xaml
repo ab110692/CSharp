@@ -1,0 +1,228 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Funcionario.SetorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Funcionario"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="SetorPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="desceNovoSetor" >
+                <DoubleAnimation 
+                                Storyboard.TargetName="cv_NovoSetor"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="-150" To="0"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+
+            <Storyboard x:Key="sobeNovoSetor" >
+                <DoubleAnimation 
+                                Storyboard.TargetName="cv_NovoSetor"
+                                Storyboard.TargetProperty="(Canvas.Top)"
+                                From="0" To="-150"
+                                Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="desaparecerBtn" >
+                <DoubleAnimation 
+                                Storyboard.TargetName="btn_Novo"
+                                Storyboard.TargetProperty="(Button.Opacity)"
+                                From="1" To="0"
+                                Duration="0:0:0.2"/>
+            </Storyboard>
+            <Storyboard x:Key="aparecerBtn" >
+                <DoubleAnimation 
+                                Storyboard.TargetName="btn_Novo"
+                                Storyboard.TargetProperty="(Button.Opacity)"
+                                From="0" To="1"
+                                Duration="0:0:0.4"/>
+            </Storyboard>
+
+            <Storyboard x:Key="esqDir" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    From="-1080" To="0"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            
+            <Storyboard x:Key="dirEsq" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    From="0" To="2000"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            <Storyboard x:Key="aparece" >
+                <DoubleAnimation
+                    Storyboard.TargetProperty="(Frame.Opacity)"
+                    From="0" To="1"
+                    Duration="0:0:0.4"
+                    />
+            </Storyboard>
+            <Storyboard x:Key="desaparece" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Frame.Opacity)"
+                    From="1" To="0"
+                    Duration="0:0:0.4"
+                    />
+            </Storyboard>
+
+            <Style x:Key="btn_Menu" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#442654" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Width" Value="{Binding ElementName= gd_Cadastros, Path=ActualWidth}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#65387c"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="btn_Novo" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#0f0b5b" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#130d7c"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="btn_Salvar" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#0b5b3b" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#0d7c50"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="btn_CancelarRemover" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#5b0b25" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="20"/>
+
+                <Setter Property="Template">
+
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#7a0e32"/>
+                    </Trigger>
+
+                </Style.Triggers>
+            </Style>
+
+
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid x:Name="gd_Setor"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" Background="#939393" >
+
+
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.725*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.025*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+
+        
+
+        <DataGrid x:Name="dg_Setor" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" ItemsSource="{Binding list}" 
+                  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False" 
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" SelectionChanged="dg_Setor_Selected" Margin="1" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Setor" Binding="{Binding Nome}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <Canvas x:Name="cv_Botoes" Grid.Row="3" ClipToBounds="True" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="5" Margin="5" >
+            <Button x:Name="btn_Novo" Style="{StaticResource btn_Novo}" Height="30" Width="300" Content="Novo" Canvas.Top="0" Canvas.Left="10" Click="btn_Novo_Click" />
+
+            <Canvas x:Name="cv_NovoSetor" Canvas.Top="-150" Height="{Binding ElementName=cv_Botoes, Path=ActualHeight}" Width="{Binding ElementName=cv_Botoes, Path=ActualWidth}" >
+                <Viewbox Canvas.Bottom="90" Canvas.Left="10"   HorizontalAlignment="Right" >
+                    <TextBlock FontSize="25" Text="Setor" />
+                </Viewbox>
+                <TextBox  x:Name="txt_SetorNome" Canvas.Bottom="55" Canvas.Left="10" Height="30" Width="900" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" />
+                <Button x:Name="btn_SetorRemover" Canvas.Bottom="10" Canvas.Left="10" Height="30" Width="300" Content="Remover" Style="{StaticResource btn_CancelarRemover}" Click="btn_SetorRemover_Click"/>
+                <Button x:Name="btn_SetorSalvar" Canvas.Bottom="10" Canvas.Right="10" Height="30" Width="300"  Content="Salvar" Style="{StaticResource btn_Salvar}" Click="btn_SetorSalvar_Click" />
+            </Canvas>
+
+        </Canvas>
+
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,99 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Atendimento.ConsultaAtendimentoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Atendimento"
+      mc:Ignorable="d" 
+      d:DesignHeight="768"
+      d:DesignWidth="1024" 
+      Title="ConsultaAtendimentoPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="2.5"/>
+            </Style>
+
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin" Value="2.5"/>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="2.5"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.10*"/>
+            <RowDefinition Height="0.95*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.06*"/>
+            </Grid.RowDefinitions>
+
+            <Viewbox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" >
+                <TextBlock Text="Localizar"/>
+            </Viewbox>
+
+            <Viewbox Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" >
+                <TextBlock Text="Filtro"/>
+            </Viewbox>
+
+            <Viewbox Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" >
+                <TextBlock Text="Mês"/>
+            </Viewbox>
+
+            <Viewbox Grid.Row="0" Grid.Column="5" HorizontalAlignment="Left" >
+                <TextBlock Text="Ano"/>
+            </Viewbox>
+
+            <TextBox x:Name="txtLocalizar" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" KeyDown="txtLocalizar_KeyDown"/>
+            <ComboBox x:Name="cbFiltro" Grid.Row="1" Grid.Column="3" />
+            <ComboBox x:Name="cbMes" Grid.Row="1" Grid.Column="4" />
+            <ComboBox x:Name="cbAno" Grid.Row="1" Grid.Column="5" />
+
+            <Button x:Name="btn_Localizar" Style="{StaticResource ButtonBlue}" Content="Localizar" Grid.Row="1" Grid.Column="6" Click="btn_Localizar_Click" />
+
+        </Grid>
+
+        <DataGrid x:Name="gdTabela" Grid.Row="3"
+                  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="False"
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
+                  CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True"
+                  MouseDown="gdTabela_MouseDown"
+                                    >
+            <DataGrid.Columns >
+                <DataGridTextColumn Width="0.1*" Header="Protocolo" Binding="{Binding Protocolo}" />
+                <DataGridTextColumn Width="0.1*" Header="Data" Binding="{Binding Data, StringFormat=\{0:dd/MM/yy HH:mm:ss\}}"/>
+                <DataGridTextColumn Width="0.1*" Header="Atendente" Binding="{Binding Atendente}"/>
+                <DataGridTextColumn Width="0.05*" Header="Número" Binding="{Binding NumeroCliente}"/>
+                <DataGridTextColumn Width="0.2*" Header="Cliente" Binding="{Binding Cliente}"/>
+                <DataGridTextColumn Width="0.1*" Header="Contato" Binding="{Binding Contato}"/>
+                <DataGridTextColumn Width="0.35*" Header="Problema" Binding="{Binding Problema}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,18 @@
+<resources>
+    <declare-styleable name="CustomButton">
+        <attr name="titulo" format="string" />
+        <attr name="textSizeTitulo" format="dimension" />
+        <attr name="textStyleTitulo" format="enum">
+            <enum name="DEFAULT" value="0" />
+            <enum name="BOLD" value="1" />
+        </attr>
+        <attr name="subTitulo" format="string" />
+        <attr name="textSizeSubTitulo" format="dimension" />
+        <attr name="textStyleSubTitulo" format="enum">
+            <enum name="DEFAULT" value="0" />
+            <enum name="BOLD" value="1" />
+        </attr>
+        <attr name="imagem" format="integer" />
+        <attr name="imagemTint" format="color"/>
+    </declare-styleable>
+</resources>

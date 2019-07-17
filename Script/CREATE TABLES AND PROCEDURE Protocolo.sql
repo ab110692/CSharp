@@ -1,0 +1,70 @@
+/*Ano Mes Dia 0000
+
+AA MM DD 0000
+
+AAMMDD0000
+
+0000000000*/
+IF NOT EXISTS (SELECT * FROM SYS.objects WHERE name = 'ProtocoloExtension')
+BEGIN
+CREATE TABLE ProtocoloExtension
+(
+Protocolo INT NOT NULL,
+Data DATETIME NOT NULL
+)
+END
+
+GO
+
+IF NOT EXISTS (SELECT * FROM ProtocoloExtension)
+BEGIN
+INSERT INTO ProtocoloExtension VALUES (0,GETDATE())
+END
+
+GO
+
+IF EXISTS(SELECT * FROM sys.procedures WHERE sys.procedures.name = 'GeraProcotolo')
+BEGIN
+DROP PROCEDURE GeraProcotolo
+END
+
+GO
+
+CREATE PROCEDURE GeraProcotolo
+(
+@Tipo INT
+)
+AS
+BEGIN
+DECLARE @DIA VARCHAR(2)
+DECLARE @MES VARCHAR(2)
+DECLARE @ANO VARCHAR(2)
+DECLARE @NUM VARCHAR(4)
+DECLARE @PROTOCOLO VARCHAR(12)
+
+SET @DIA = (SELECT RIGHT('0' + CONVERT (VARCHAR(2),DAY(GETDATE())) ,2) )
+SET @MES = (SELECT RIGHT('0' + CONVERT (VARCHAR(2),MONTH(GETDATE())) ,2) )
+SET @ANO = (SELECT RIGHT(YEAR(GETDATE()),2))
+
+IF DAY(GETDATE()) <> (SELECT DAY(DATA) FROM ProtocoloExtension)
+BEGIN
+UPDATE ProtocoloExtension SET Data = GETDATE(), Protocolo = 0
+END
+ELSE
+BEGIN
+UPDATE ProtocoloExtension SET Protocolo = Protocolo + 1
+END
+
+SET @NUM = (SELECT RIGHT('000' + CONVERT (VARCHAR(4), (SELECT Protocolo FROM ProtocoloExtension)),4))
+
+SET @PROTOCOLO = (@DIA + @MES + @ANO + @NUM)
+
+DECLARE @ID TABLE(ID BIGINT)
+--INSERT INTO Protocolo (Protocolo,Tipo) OUTPUT INSERTED.IDProtocolo into @ID  VALUES (@PROTOCOLO,@Tipo)
+
+SELECT (SELECT ID from @ID) as IDProtocolo,CONVERT(BIGINT,@PROTOCOLO) as Protocolo, @Tipo as Tipo
+END
+GO
+
+
+EXEC GeraProcotolo 0

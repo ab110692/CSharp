@@ -1,0 +1,319 @@
+﻿<Window x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Atendimento.NovoAtendimento"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="768"
+      d:DesignWidth="1024" 
+      Title="NovoAtendimento">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+                <ResourceDictionary Source="/GeometryResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.002*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.002*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.002*"/>
+            <RowDefinition Height="0.55*"/>
+        </Grid.RowDefinitions>
+
+        <!--Grid Protocolo, Atendente e Data-->
+        <Grid Grid.Row="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.48*"/>
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.48*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.48*"/>
+                <ColumnDefinition Width="0.03*"/>
+                <ColumnDefinition Width="2.48*"/>
+                <ColumnDefinition Width="0.03*"/>
+                <ColumnDefinition Width="2.48*"/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Column="0">
+                <Label Content="Protocolo:" />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Center" Grid.Column="2" >
+                <Label Content="Atendente:"  />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Column="4">
+                <Label Content="Data registro:"/>
+            </Viewbox>
+
+            <TextBox x:Name="txtProtocolo" Grid.Row="2" Grid.Column="0" IsEnabled="False"/>
+
+            <Viewbox HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+                <Label x:Name="lbNomeFuncionario" Content="Nome.Sobrenome" />
+            </Viewbox>
+
+            <TextBox x:Name="txtDataRegistro" Grid.Row="2" Grid.Column="4" IsEnabled="false"/>
+
+        </Grid>
+        <!--Grid Contato e Loja-->
+        <Grid Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.48*"/>
+                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.48*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.16*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
+                <Label Content="Contato:"  />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
+                <Label Content="Rede:" />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="4">
+                <Label Content="Código Loja:" />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="6">
+                <Label Content="Razão Social:" />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="8">
+                <Label Content="Nome Fantasia:" />
+            </Viewbox>
+
+            <TextBox x:Name="txtContato" Grid.Row="2" Grid.Column="0"/>
+            <ComboBox x:Name="cbRede" Grid.Row="2" Grid.Column="2" SelectionChanged="cbRede_SelectionChanged"/>
+            <TextBox x:Name="txtCodigoLoja" Grid.Row="2" Grid.Column="4" KeyDown="txtCodigoLoja_KeyDown"/>
+            <ComboBox x:Name="cbRazaoSocial" Grid.Row="2" Grid.Column="6" SelectionChanged="cbRazaoSocial_SelectionChanged"/>
+            <ComboBox x:Name="cbNomeFantasia" Grid.Row="2" Grid.Column="8" SelectionChanged="cbNomeFantasia_SelectionChanged"/>
+        </Grid>
+        <!--Grid Categoria e Aplicativo-->
+        <Grid Grid.Row="4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.38225*"/>
+                <RowDefinition Height="0.0225*"/>
+                <RowDefinition Height="0.19*"/>
+                <RowDefinition Height="0.0225*"/>
+                <RowDefinition Height="0.19*"/>
+                <RowDefinition Height="0.0225*"/>
+                <RowDefinition Height="0.19*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3233*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="0.3233*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="0.3233*"/>
+            </Grid.ColumnDefinitions>
+            <!--Grid Categoria e SubCategoria-->
+            <Grid Grid.Row="0" Grid.ColumnSpan="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.49*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.49*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.49*"/>
+                    <ColumnDefinition Width="0.02*"/>
+                    <ColumnDefinition Width="0.49*"/>
+                </Grid.ColumnDefinitions>
+
+                <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
+                    <Label Content="Categoria" />
+                </Viewbox>
+
+                <Viewbox HorizontalAlignment="Left" Grid.Row="0" Grid.Column="2">
+                    <Label Content="Sub Categoria" />
+                </Viewbox>
+
+                <ComboBox x:Name="cbCategoria" Grid.Row="2" Grid.Column="0" SelectionChanged="cbCategoria_SelectionChanged"/>
+                <ComboBox x:Name="cbSubCategoria" Grid.Row="2" Grid.Column="2" SelectionChanged="cbSubCategoria_SelectionChanged"/>
+            </Grid>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0">
+                <Label Content="Item" />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2">
+                <Label Content="Aplicativo" />
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4">
+                <Label Content="Versão" />
+            </Viewbox>
+
+            <ComboBox x:Name="cbItem" Grid.Row="4" Grid.Column="0" />
+            <ComboBox x:Name="cbAplicativo" Grid.Row="4" Grid.Column="2" SelectionChanged="cbAplicativo_SelectionChanged"/>
+            <ComboBox x:Name="cbVersao" Grid.Row="4" Grid.Column="4" />
+
+            <!--Grid para Botao-->
+            <Grid Grid.Row="6" Grid.ColumnSpan="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.49*"/>
+                    <ColumnDefinition Width="0.02*"/>
+                    <ColumnDefinition Width="0.49*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource ButtonBlue}" x:Name="btnAdicionar" Content="Adicionar" Grid.Row="0" Grid.Column="0" Click="btnAdicionar_Click"/>
+                <Button Style="{StaticResource ButtonRed}" x:Name="btnRemover" Content="Remover" Grid.Row="0" Grid.Column="2" Click="btnRemover_Click"/>
+            </Grid>
+        </Grid>
+        <!--Grid abaixo-->
+        <Grid Grid.Row="6">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.695*"/>
+                <ColumnDefinition Width="0.005*"/>
+                <ColumnDefinition Width="0.30*"/>
+            </Grid.ColumnDefinitions>
+            <!--Grid Problema e Solucao-->
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.09*"/>
+                    <RowDefinition Height="0.00666*"/>
+                    <RowDefinition Height="0.40*"/>
+                    <RowDefinition Height="0.00666*"/>
+                    <RowDefinition Height="0.09*"/>
+                    <RowDefinition Height="0.00666*"/>
+                    <RowDefinition Height="0.40*"/>
+                </Grid.RowDefinitions>
+
+                <Viewbox HorizontalAlignment="Left" Grid.Row="0">
+                    <Label Content="Problema"/>
+                </Viewbox>
+
+                <DataGrid x:Name="dgTabela" Margin="2" Grid.Row="2" 
+                  Height="auto"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                          ItemsSource="{Binding DTOTabelaCategoriaList}"
+                  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Categoria" Binding="{Binding Categoria}" Width="1*"/>
+                        <DataGridTextColumn Header="Sub Categoria" Binding="{Binding SubCategoria}" Width="1*"/>
+                        <DataGridTextColumn Header="Item" Binding="{Binding Item}" Width="1*"/>
+                        <DataGridTextColumn Header="Aplicativo" Binding="{Binding Aplicativo}" Width="1*"/>
+                        <DataGridTextColumn Header="Versão" Binding="{Binding Versao}" Width="1*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <Viewbox HorizontalAlignment="Left"  Grid.Row="4">
+                    <Label Content="Solução" />
+                </Viewbox>
+
+                <TextBox x:Name="txtSolucao" TextWrapping="Wrap" Grid.Row="6" Margin="2" AcceptsReturn="true" Height="auto" FontSize="18" MaxLines="50"/>
+            </Grid>
+            <!--Grid Status, Butao e imagem-->
+            <Grid Grid.Column="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.02*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+
+                <Viewbox Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" MaxHeight="16">
+                    <CheckBox x:Name="ckbContrato" Content="Contrato"/>
+                </Viewbox>
+                <Viewbox Grid.Row="0" HorizontalAlignment="Center">
+                    <Label x:Name="lbTelefone" Content="Telefone" />
+                </Viewbox>
+                <Viewbox Grid.Row="0" HorizontalAlignment="Right">
+                    <Label x:Name="lbCelular" Content="Celuar"/>
+                </Viewbox>
+
+
+                <Viewbox Grid.Row="2" HorizontalAlignment="Left">
+                    <Label Content="Imagem"/>
+                </Viewbox>
+
+                <DataGrid x:Name="dgImagem" Grid.Row="4" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Caminho" Width="0.8*"/>
+                        <DataGridTemplateColumn Header="" Width="0.1*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Height="16" Width="16">
+                                        <Image Source="/Br.Com.Posi.Shelf.Desktop;component/Pictures/remove-16.png" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="" Width="0.1*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Height="16" Width="16">
+                                        <Image Source="/Br.Com.Posi.Shelf.Desktop;component/Pictures/more-16.png" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Viewbox Grid.Row="6" HorizontalAlignment="Left">
+                    <Label Content="Status"/>
+                </Viewbox>
+
+                <ComboBox x:Name="cbStatusAtendimento" Grid.Row="8"/>
+
+                <Button Style="{StaticResource ButtonYellow}" x:Name="btnHistorico" Content="Histórico" Grid.Row="10" />
+
+                <Button Style="{StaticResource ButtonBlue}" x:Name="btnImprimir" Content="Imprimir" Grid.Row="12" />
+
+                <Button Style="{StaticResource ButtonGreen}" x:Name="btnFinalizar" Content="Finalizar" Grid.Row="14" Click="btnFinalizar_Click"/>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>
+
+    
+    
+    
+    

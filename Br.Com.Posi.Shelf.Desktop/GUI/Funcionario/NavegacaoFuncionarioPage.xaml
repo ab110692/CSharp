@@ -1,0 +1,223 @@
+﻿<Page x:Class="Br.Com.Posi.Shelf.Desktop.GUI.Funcionario.NavegacaoFuncionarioPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Br.Com.Posi.Shelf.Desktop.GUI.Funcionario"     
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:posi="clr-namespace:Br.Com.Posi.MyUI;assembly=Br.Com.Posi"
+      mc:Ignorable="d" 
+      d:DesignHeight="720"
+      d:DesignWidth="1080"
+      Title="NavegacaoFuncionarioPage">
+
+    <Page.Resources>
+        
+        <ResourceDictionary>            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/GUI/Color.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="btn_Menu" TargetType="{x:Type Button}" >
+                <Setter Property="Background" Value="#442654" />
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="{Binding ElementName= gd_Cadastros, Path=ActualWidth}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#65387c"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Storyboard x:Key="esqDir" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    From="-1080" To="0"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            <Storyboard x:Key="dirEsq" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    From="2000" To="0"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            <Storyboard x:Key="dirEsqSair" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    From="0" To="2000"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            <Storyboard x:Key="esqDirSair" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Canvas.Left)"
+                    From="0" To="-2000"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            <Storyboard x:Key="aparece" >
+                <DoubleAnimation
+                    Storyboard.TargetProperty="(Frame.Opacity)"
+                    From="0" To="1"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            <Storyboard x:Key="desaparece" >
+                <DoubleAnimation                    
+                    Storyboard.TargetProperty="(Frame.Opacity)"
+                    From="1" To="0"
+                    Duration="0:0:0.2"
+                    />
+            </Storyboard>
+            
+
+        </ResourceDictionary>
+        
+    </Page.Resources>
+
+    <Grid Margin="10">
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="0.02*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.02*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.02*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.02*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.045*"/>
+            <RowDefinition Height="0.005*"/>
+            <RowDefinition Height="0.95*"/>
+        </Grid.RowDefinitions>
+
+        <Canvas x:Name="cv_navegacao" ClipToBounds="True" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="7" >
+            <Frame   Canvas.Left="-1500" x:Name="f_Navegacao" Height="{Binding ElementName=cv_navegacao, Path=ActualHeight}" Width="{Binding ElementName=cv_navegacao, Path=ActualWidth}" />
+            <Frame   Canvas.Left="-1500" x:Name="f_Setor" Height="{Binding ElementName=cv_navegacao, Path=ActualHeight}" Width="{Binding ElementName=cv_navegacao, Path=ActualWidth}" />
+            <Frame   Canvas.Left="-1500" x:Name="f_Perfil" Height="{Binding ElementName=cv_navegacao, Path=ActualHeight}" Width="{Binding ElementName=cv_navegacao, Path=ActualWidth}" />
+            <Frame   Canvas.Left="-1500" x:Name="f_Funcionario" Height="{Binding ElementName=cv_navegacao, Path=ActualHeight}" Width="{Binding ElementName=cv_navegacao, Path=ActualWidth}" />
+        </Canvas>
+        
+        <Canvas ClipToBounds="True"  Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="7" >
+            <Grid  Height="{Binding ElementName=cv_navegacao, Path=ActualHeight}" Width="{Binding ElementName=cv_navegacao, Path=ActualWidth}" >
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="0.02*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.02*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.02*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.02*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.005*"/>
+                    <RowDefinition Height="0.95*"/>
+                </Grid.RowDefinitions>
+                <Canvas x:Name="cv_nav" ClipToBounds="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" >
+                    <Grid  x:Name="gd_navegacao" Canvas.Left="0" Width="{Binding ElementName=cv_nav, Path=ActualWidth}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.02*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.02*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.02*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.02*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="bt_Setor" Content="Setor" Style="{StaticResource btn_Menu}" Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" FontSize="22" Click="bt_Setor_Click"/>
+                        <Button x:Name="bt_Perfil" Content="Perfil" Style="{StaticResource btn_Menu}" Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="3" FontSize="22" Click="bt_Perfil_Click"/>
+                        <Button x:Name="bt_Funcionario" Content="Funcionário" Style="{StaticResource btn_Menu}" Grid.Row="0"  Grid.Column="5" Grid.ColumnSpan="2" FontSize="22" Click="bt_Funcionario_Click"/>
+                    </Grid>
+
+                    <Grid x:Name="gd_Setor" Canvas.Left="-1500" Width="{Binding ElementName=cv_nav, Path=ActualWidth}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border x:Name="bd_Setor" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Background="#442654" Height="{Binding ElementName=bt_Setor, Path=ActualHeight}" >
+                            <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="50">
+                                <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Cadastro de Setor" Foreground="White" />
+                            </Viewbox>
+                        </Border>                        
+                        <Button x:Name="btn_SetorVoltar" Style="{StaticResource btn_Menu}" Height="{Binding ElementName=bd_Setor, Path=ActualHeight}" Grid.Row="0" Grid.Column="0" Content="Voltar" Click="btn_SetorVoltar_Click" />
+                        <Button x:Name="btn_SetorPerfil" Style="{StaticResource btn_Menu}" Height="{Binding ElementName=bd_Setor, Path=ActualHeight}" Grid.Row="0" Grid.Column="4" Content="Perfil" Click="btn_SetorPerfil_Click" />
+
+
+                    </Grid>
+                    <Grid x:Name="gd_Perfil" Canvas.Left="-1500" Width="{Binding ElementName=cv_nav, Path=ActualWidth}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border x:Name="bd_Perfil" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Background="#442654" Height="{Binding ElementName=bt_Setor, Path=ActualHeight}" >
+                            <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="50">
+                                <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Cadastro de Perfil" Foreground="White" />
+                            </Viewbox>
+                        </Border>
+                        <Button x:Name="btn_PerfilVoltar" Style="{StaticResource btn_Menu}" Height="{Binding ElementName=bd_Setor, Path=ActualHeight}" Grid.Row="0" Grid.Column="0" Content="Voltar" Click="btn_PerfilVoltar_Click" />
+                        <Button x:Name="btn_PerfilFuncionario" Style="{StaticResource btn_Menu}" Height="{Binding ElementName=bd_Setor, Path=ActualHeight}" Grid.Row="0" Grid.Column="4" Content="Funcionario" Click="btn_PerfilFuncionario_Click"  />
+
+
+                    </Grid>
+
+                    <Grid x:Name="gd_Funcionario" Canvas.Left="-1500" Width="{Binding ElementName=cv_nav, Path=ActualWidth}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border x:Name="bd_Funcionario" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Background="#442654" Height="{Binding ElementName=bt_Setor, Path=ActualHeight}" >
+                            <Viewbox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MaxHeight="50">
+                                <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="Cadastro de Funcionario" Foreground="White" />
+                            </Viewbox>
+                        </Border>
+                        <Button x:Name="btn_FuncionarioVoltar" Style="{StaticResource btn_Menu}" Height="{Binding ElementName=bd_Setor, Path=ActualHeight}" Grid.Row="0" Grid.Column="0" Content="Voltar" Click="btn_FuncionarioVoltar_Click" />
+                        <Button x:Name="btn_FuncionarioSetor" Style="{StaticResource btn_Menu}" Height="{Binding ElementName=bd_Setor, Path=ActualHeight}" Grid.Row="0" Grid.Column="4" Content="Setor" Click="btn_FuncionarioSetor_Click"  />
+
+
+                    </Grid>
+                </Canvas>
+                
+                
+
+
+
+
+            </Grid>
+        </Canvas>
+        
+    </Grid>
+</Page>

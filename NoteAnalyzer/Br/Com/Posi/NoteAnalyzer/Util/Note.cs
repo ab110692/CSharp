@@ -77,80 +77,163 @@ namespace Br.Com.Posi.NoteAnalyzer.Util
                         String[] extracts = Directory.GetDirectories(t);
                         foreach (String e in extracts)
                         {
-                            if (e.Split('\\').Last().Equals("Enviadas", StringComparison.OrdinalIgnoreCase)
-                                || e.Split('\\').Last().Equals("Inutilizadas", StringComparison.OrdinalIgnoreCase)
-                                || e.Split('\\').Last().Equals("Canceladas", StringComparison.OrdinalIgnoreCase)
-                                || e.Split('\\').Last().Equals("Extrato", StringComparison.OrdinalIgnoreCase))
+                            String[] notes;
+                            if (e.Split('\\').Last().StartsWith("Enviad", StringComparison.OrdinalIgnoreCase))
                             {
-                                switch (e.Split('\\').Last())
+                                notes = Directory.GetFiles(e);
+                                foreach (String n in notes)
                                 {
-                                    case "Enviadas":
-                                        String[] notes = Directory.GetFiles(e);
-                                        foreach (String n in notes)
-                                        {
-                                            if (w.CancellationPending)
-                                            {
-                                                return new List<NoteModel>();
-                                            }
-                                            NoteModel note = new NoteModel();
-                                            FileInfo info = new FileInfo(n);
-                                            note.DataCriado = info.CreationTime;
-                                            note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");//n.Substring(n.LastIndexOf(@"\") + 1).Replace("NFe", "").Replace("CFe", "");
-                                            note.extrato = Extrato.Venda;
-                                            models.Add(note);
-                                        }
-                                        break;
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    FileInfo info = new FileInfo(n);
+                                    note.DataCriado = info.CreationTime;
+                                    note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
+                                    note.extrato = Extrato.Venda;
+                                    models.Add(note);
+                                }
+                            }
+                            else if (e.Split('\\').Last().StartsWith("Inutilizad", StringComparison.OrdinalIgnoreCase))
+                            {
+                                notes = Directory.GetFiles(e);
+                                foreach (String n in notes)
+                                {
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    FileInfo info = new FileInfo(n);
+                                    note.extrato = Extrato.Inutilizado;
+                                    note.DataCriado = info.CreationTime;
+                                    note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
+                                    models.Add(note);
+                                }
+                            }
+                            else if (e.Split('\\').Last().StartsWith("Cancelad", StringComparison.OrdinalIgnoreCase))
+                            {
+                                notes = Directory.GetFiles(e);
+                                foreach (String n in notes)
+                                {
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    FileInfo info = new FileInfo(n);
+                                    note.extrato = Extrato.Cancelado;
+                                    note.DataCriado = info.CreationTime;
+                                    note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
+                                    models.Add(note);
+                                }
+                            }
+                            else if (e.Split('\\').Last().StartsWith("Extrat", StringComparison.OrdinalIgnoreCase))
+                            {
+                                notes = Directory.GetFiles(e);
+                                DirectoryInfo dirInfo = new DirectoryInfo(e);
+                                foreach (String n in notes)
+                                {
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    //FileInfo info = new FileInfo(n);
+                                    note.DataCriado = dirInfo.CreationTime;//info.CreationTime;
+                                    note.Chave = n.Substring(n.LastIndexOf(@"\") + 1).Replace("NFe", "").Replace("CFe", "");
+                                    models.Add(note);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return models;
+        }
 
-                                    case "Inutilizadas":
-                                        notes = Directory.GetFiles(e);
-                                        foreach (String n in notes)
-                                        {
-                                            if (w.CancellationPending)
-                                            {
-                                                return new List<NoteModel>();
-                                            }
-                                            NoteModel note = new NoteModel();
-                                            FileInfo info = new FileInfo(n);
-                                            note.extrato = Extrato.Inutilizado;
-                                            note.DataCriado = info.CreationTime;
-                                            note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
-                                            models.Add(note);
-                                        }
-                                        break;
-
-                                    case "Canceladas":
-                                        notes = Directory.GetFiles(e);
-                                        foreach (String n in notes)
-                                        {
-                                            if (w.CancellationPending)
-                                            {
-                                                return new List<NoteModel>();
-                                            }
-                                            NoteModel note = new NoteModel();
-                                            FileInfo info = new FileInfo(n);
-                                            note.extrato = Extrato.Cancelado;
-                                            note.DataCriado = info.CreationTime;
-                                            note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
-                                            models.Add(note);
-                                        }
-                                        break;
-
-                                    case "Extrato":
-                                        notes = Directory.GetFiles(e);
-                                        DirectoryInfo dirInfo = new DirectoryInfo(e);
-                                        foreach (String n in notes)
-                                        {
-                                            if (w.CancellationPending)
-                                            {
-                                                return new List<NoteModel>();
-                                            }
-                                            NoteModel note = new NoteModel();
-                                            //FileInfo info = new FileInfo(n);
-                                            note.DataCriado = dirInfo.CreationTime;//info.CreationTime;
-                                            note.Chave = n.Substring(n.LastIndexOf(@"\") + 1).Replace("NFe", "").Replace("CFe", "");
-                                            models.Add(note);
-                                        }
-                                        break;
+        public static List<NoteModel> ListNotePerMonthPerStore(String path, String rede, String store, String type, BackgroundWorker w)
+        {
+            List<NoteModel> models = new List<NoteModel>();
+            String[] days = Directory.GetDirectories(path + @"\" + rede + @"\" + store + @"\");
+            foreach (String d in days)
+            {
+                String[] types = Directory.GetDirectories(d);
+                foreach (String t in types)
+                {
+                    if (t.Split('\\').Last().Equals(type, StringComparison.OrdinalIgnoreCase))
+                    {
+                        String[] extracts = Directory.GetDirectories(t);
+                        foreach (String e in extracts)
+                        {
+                            String[] notes;
+                            if (e.Split('\\').Last().StartsWith("Enviad", StringComparison.OrdinalIgnoreCase))
+                            {
+                                notes = Directory.GetFiles(e);
+                                foreach (String n in notes)
+                                {
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    FileInfo info = new FileInfo(n);
+                                    note.DataCriado = info.CreationTime;
+                                    note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
+                                    note.extrato = Extrato.Venda;
+                                    models.Add(note);
+                                }
+                            }
+                            else if (e.Split('\\').Last().StartsWith("Inutilizad", StringComparison.OrdinalIgnoreCase))
+                            {
+                                notes = Directory.GetFiles(e);
+                                foreach (String n in notes)
+                                {
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    FileInfo info = new FileInfo(n);
+                                    note.extrato = Extrato.Inutilizado;
+                                    note.DataCriado = info.CreationTime;
+                                    note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
+                                    models.Add(note);
+                                }
+                            }
+                            else if (e.Split('\\').Last().StartsWith("Cancelad", StringComparison.OrdinalIgnoreCase))
+                            {
+                                notes = Directory.GetFiles(e);
+                                foreach (String n in notes)
+                                {
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    FileInfo info = new FileInfo(n);
+                                    note.extrato = Extrato.Cancelado;
+                                    note.DataCriado = info.CreationTime;
+                                    note.Chave = info.Name.Replace("NFe", "").Replace("CFe", "");
+                                    models.Add(note);
+                                }
+                            }
+                            else if (e.Split('\\').Last().StartsWith("Extrat", StringComparison.OrdinalIgnoreCase))
+                            {
+                                notes = Directory.GetFiles(e);
+                                DirectoryInfo dirInfo = new DirectoryInfo(e);
+                                foreach (String n in notes)
+                                {
+                                    if (w.CancellationPending)
+                                    {
+                                        return new List<NoteModel>();
+                                    }
+                                    NoteModel note = new NoteModel();
+                                    //FileInfo info = new FileInfo(n);
+                                    note.DataCriado = dirInfo.CreationTime;//info.CreationTime;
+                                    note.Chave = n.Substring(n.LastIndexOf(@"\") + 1).Replace("NFe", "").Replace("CFe", "");
+                                    models.Add(note);
                                 }
                             }
                         }
@@ -169,7 +252,7 @@ namespace Br.Com.Posi.NoteAnalyzer.Util
                 month = "12";
                 year = (Convert.ToInt32(year) - 1).ToString();
             }
-            else if(month.Length != 2)
+            else if (month.Length != 2)
             {
                 month = "0" + (Convert.ToInt32(month) - 1).ToString();
             }
@@ -214,7 +297,7 @@ namespace Br.Com.Posi.NoteAnalyzer.Util
                 month = "01";
                 year = (Convert.ToInt32(year) + 1).ToString();
             }
-            else if(month.Length != 2)
+            else if (month.Length != 2)
             {
                 month = "0" + (Convert.ToInt32(month) + 1).ToString();
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Br.Com.Posi.NoteAnalyzer.DataGrid.Model
 {
-    public class NotePerState
+    public class NotePerState : IEquatable<NotePerState>
     {
         public String numeroLoja { get; set; }
 
@@ -27,5 +27,16 @@ namespace Br.Com.Posi.NoteAnalyzer.DataGrid.Model
         public List<int> numerosInutilizado { get; set; }
 
         public List<int> numerosCancelado { get; set; }
+
+        public bool Equals(NotePerState other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            //Check whether the products' properties are equal. 
+            return numeroLoja.Equals(other.numeroLoja);
+        }
     }
 }

@@ -20,40 +20,67 @@ mc:Ignorable="d"
             <RowDefinition Height="0.6*"/>
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="0.8*"/>
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="6.4*"/>
             <RowDefinition Height="0.8*"/>
         </Grid.RowDefinitions>
-        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+
+        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1">
+            <TextBlock Text="Caminho"/>
+        </Viewbox>
+
+        <TextBox x:Name="pathTextBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.Column="0">
+            <RadioButton x:Name="serverRadioButton" Content="Server" IsChecked="True" GroupName="a" />
+            </Viewbox>
+            <Viewbox Grid.Column="1">
+                <RadioButton x:Name="backupRadioButton" Content="Backup" GroupName="a"/>
+            </Viewbox>
+        </Grid>
+
+        <Button x:Name="VerificarTextBox" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="Verificar" Margin="15,0,0,0" Click="VerificarTextBox_Click" />
+
+        <Viewbox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
             <TextBlock Text="Rede"/>
         </Viewbox>
-        <ComboBox x:Name="redeComboBox" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2" SelectionChanged="redeComboBox_SelectionChanged"/>
-        <Viewbox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2">
+
+        <ComboBox x:Name="redeComboBox" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="2" SelectionChanged="redeComboBox_SelectionChanged"/>
+
+        <Viewbox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Visibility="Collapsed">
             <TextBlock Text="Estado"/>
         </Viewbox>
-        <ComboBox x:Name="estadoComboBox" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="2" SelectionChanged="estadoComboBox_SelectionChanged"/>
-        <Viewbox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+        <ComboBox x:Name="estadoComboBox" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="2" SelectionChanged="estadoComboBox_SelectionChanged" Visibility="Collapsed"/>
+
+        <Viewbox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
             <TextBlock Text="Ano"/>
         </Viewbox>
 
-        <ComboBox x:Name="anoComboBox" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="2" SelectionChanged="anoComboBox_SelectionChanged">
+        <ComboBox x:Name="anoComboBox" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="2" SelectionChanged="anoComboBox_SelectionChanged">
             <Viewbox>
                 <TextBlock />
             </Viewbox>
         </ComboBox>
-        <Viewbox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+        <Viewbox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
             <TextBlock Text="Mês"/>
         </Viewbox>
-        <ComboBox x:Name="mesComboBox" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="2" SelectionChanged="mesComboBox_SelectionChanged"/>
-        <Viewbox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+        <ComboBox x:Name="mesComboBox" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="2" SelectionChanged="mesComboBox_SelectionChanged"/>
+        <Viewbox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
             <RadioButton x:Name="satRadioButton" Content="SAT" GroupName="fiscal" IsChecked="True" Checked="satRadioButton_Checked" />
         </Viewbox>
-        <Viewbox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+        <Viewbox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2">
             <RadioButton x:Name="nfceRadioButton" Content="NFCE" GroupName="fiscal" Checked="nfceRadioButton_Checked"/>
         </Viewbox>
 
-        <Viewbox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Left">
+        <Viewbox Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Left">
             <TextBlock Text="Observação: * Valores sem precisão" />
         </Viewbox>
 
@@ -61,22 +88,22 @@ mc:Ignorable="d"
             x:Name="noteDataGrid" 
             IsReadOnly="true"             
             ColumnWidth="*" 
-            Grid.Row="6" 
+            Grid.Row="8" 
             Grid.Column="0" 
             Grid.ColumnSpan="4" 
             MouseDoubleClick="noteDataGrid_MouseDoubleClick"/>
 
-        <Viewbox Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Viewbox Grid.Row="9" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
             <controls:UserLoading x:Name="Loading"/>
         </Viewbox>
-        <Viewbox Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,7,0">
+        <Viewbox Grid.Row="9" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,7,0">
             <TextBlock x:Name="cronometroTextBlock" Text="00:00:00"/>
         </Viewbox>
-        <Viewbox Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
+        <Viewbox Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
             <TextBlock x:Name="threadsTextBlock" Text="Lojas: "/>
         </Viewbox>
 
-        <Button x:Name="CancelarButton" Content="Cancelar" Grid.Row="7" Grid.Column="4" Margin="4,4,0,0" Click="CancelarButton_Click" />
+        <Button x:Name="CancelarButton" Content="Cancelar" Grid.Row="9" Grid.Column="4" Margin="4,4,0,0" Click="CancelarButton_Click" />
 
     </Grid>
 </Window>

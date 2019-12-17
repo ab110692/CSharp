@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Br.Com.Posi.NoteAnalyzer.Model
 {
-    public class Cliente : IModel
+    public class Cliente : IModel, IEqualityComparer<Cliente>, IComparable<Cliente>, IComparer<Cliente>
     {
         public String NumeroDoCliente { get; set; }
         public String NomeDoCliente { get; set; }
@@ -24,6 +24,38 @@ namespace Br.Com.Posi.NoteAnalyzer.Model
         public String CEP { get; set; }
         public String Email { get; set; }
         public bool Contrato { get; set; }
+
+        public int Compare(Cliente x, Cliente y)
+        {
+            if (x == null || y == null)
+            {
+                return 0;
+            }
+            return x.GetID() == y.GetID() ? 1:0;
+        }
+
+        public int CompareTo(Cliente other)
+        {
+            if (other == null)
+            {
+                return 0;
+            }
+            return this.GetID() == other.GetID() ? 1 : 0;
+        }
+
+        public bool Equals(Cliente x, Cliente y)
+        {
+            if (x == null || y == null)
+            {
+                return false;
+            }
+            return x.GetID() == y.GetID();
+        }
+
+        public int GetHashCode(Cliente obj)
+        {
+       return obj.GetHashCode();       
+        }
 
         public int GetID()
         {

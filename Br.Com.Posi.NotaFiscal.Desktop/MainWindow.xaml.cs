@@ -72,7 +72,14 @@ namespace Br.Com.Posi.NotaFiscal.Desktop
                 string origem = txtOrigem.Text;
                 int mes = int.Parse(cbMes.SelectedItem.ToString());
                 int ano = int.Parse(cbAno.SelectedItem.ToString());
-                lblLoja.Text = Note.ListaLojaPorAnoMes(origem, mes, ano).ToString();
+                if (rbAntigo.IsChecked.Value)
+                {
+                    lblLoja.Text = Note.ListaLojaPorAnoMes(origem, mes, ano).ToString();
+                }
+                else
+                {
+                    lblLoja.Text = Note.ListaLojaPorAnoMesNovo(origem, mes, ano).ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -132,17 +139,33 @@ namespace Br.Com.Posi.NotaFiscal.Desktop
                 int mes = int.Parse(cbMes.SelectedItem.ToString());
                 int ano = int.Parse(cbAno.SelectedItem.ToString());
                 this.Lock();
-                Task task = Task.Run(() =>
+                if (rbAntigo.IsChecked.Value)
                 {
-                    string total = Note.ListaLojaPorAnoMes(origem, mes, ano).ToString();
-                    this.Dispatcher.Invoke(() => this.userLoading.TrocarMensagem($"Compactado: 0 de: {total}"));
-                    foreach (int qts in Note.CompactarPorAnoMes(origem, destino, mes, ano)) {
-                        this.Dispatcher.Invoke(() => this.userLoading.TrocarMensagem($"Compactado: {qts + 1} de: {total}"));
-                    }
-                    this.Dispatcher.Invoke(() => this.UnLock());
-                });
-
-
+                    Task task = Task.Run(() =>
+                    {
+                        string total = Note.ListaLojaPorAnoMes(origem, mes, ano).ToString();
+                        this.Dispatcher.Invoke(() => this.userLoading.TrocarMensagem($"Compactado: 0 de: {total}"));
+                        foreach (int qts in Note.CompactarPorAnoMes(origem, destino, mes, ano))
+                        {
+                            this.Dispatcher.Invoke(() => this.userLoading.TrocarMensagem($"Compactado: {qts + 1} de: {total}"));
+                        }
+                        this.Dispatcher.Invoke(() => this.UnLock());
+                    });
+                }
+                else
+                {
+                    Task task = Task.Run(() =>
+                    {
+                        string total = Note.ListaLojaPorAnoMesNovo(origem, mes, ano).ToString();
+                        this.Dispatcher.Invoke(() => this.userLoading.TrocarMensagem($"Compactado: 0 de: {total}"));
+                        foreach (int qts in Note.CompactarPorAnoMesNovo(origem, destino, mes, ano))
+                        {
+                            this.Dispatcher.Invoke(() => this.userLoading.TrocarMensagem($"Compactado: {qts + 1} de: {total}"));
+                        }
+                        this.Dispatcher.Invoke(() => this.UnLock());
+                    });
+                }
+                
             }
             catch (Exception ex)
             {

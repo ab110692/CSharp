@@ -102,9 +102,22 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="0.5*"/>
-            </Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
 
-            <Viewbox
+                <Viewbox Grid.Row="0" Grid.Column="0">
+                    <Label Content="Modelo"/>
+                </Viewbox>
+
+                <Viewbox Grid.Row="0" Grid.Column="1">
+                    <RadioButton Name="rbNovo" Content="Novo" GroupName="group1" />
+                </Viewbox>
+
+                <Viewbox Grid.Row="0" Grid.Column="2">
+                    <RadioButton Name="rbAntigo" Content="Antigo" GroupName="group1" IsChecked="true"/>
+                </Viewbox>
+
+                <Viewbox
                 Grid.Row="1"
                 Grid.Column="0"
                 MaxHeight="35">
@@ -118,6 +131,7 @@
             <Viewbox
                 Grid.Row="1"
                 Grid.Column="1"
+                Grid.ColumnSpan="2"
                 MaxHeight="35">
                 <TextBlock
                 Name="lblLoja"

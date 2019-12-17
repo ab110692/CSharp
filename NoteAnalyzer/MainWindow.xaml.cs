@@ -29,13 +29,15 @@ namespace NoteAnalyzer
         private List<Object[]> run = new List<object[]>();
 
         private BackgroundWorker background1;
-        private const int QUANTIDADE_WORK = 5;
+        private const int QUANTIDADE_WORK = 8;
 
         private object locks = new object();
-
+        //@"\\192.193.10.252\d\xml\";
+        String pathRaiz = @"\\192.193.10.252\d\xml\";//@"D:\xml\";
+        String PathLocal = @"D:\xml\";
         String server = "192.193.10.252";
-        String user = "habibs";
-        String pass = "Hab2016!";
+        String user = "administrador";
+        String pass = "Dko5cv4k!";
 
         DateTime timeNow;
 
@@ -46,10 +48,16 @@ namespace NoteAnalyzer
         public MainWindow()
         {
             InitializeComponent();
+
+            this.pathTextBox.Text = PathLocal;
+            pathRaiz = this.pathTextBox.Text;
+
             LoadNetwork();
             Loading.Visibility = Visibility.Collapsed;
             //noteDataGrid.ItemsSource = NotePerStates.ToList();
             LoadGrid();
+
+            
 
             time = new DispatcherTimer();
             time.Interval = new TimeSpan(1000);
@@ -176,7 +184,7 @@ namespace NoteAnalyzer
                 nota.Ano = (string)aux[3];
                 nota.Mes = (string)aux[4];
                 nota.Fiscal = (string)aux[5];
-                nota.Estado = estadoComboBox.SelectedItem.ToString();
+                //nota.Estado = estadoComboBox.SelectedItem.ToString();
 
                 new Br.Com.Posi.NoteAnalyzer.DAO.NoteDAOImpl().Save(nota);
             }
@@ -250,7 +258,7 @@ namespace NoteAnalyzer
 
         private void LoadMonth()
         {
-            mesComboBox.Items.Clear();
+            mesComboBox.Items.Clear();            
             for (int i = 1; i <= 12; i++)
             {
                 mesComboBox.Items.Add(i < 10 ? "0" + i.ToString() : i.ToString());
@@ -262,8 +270,8 @@ namespace NoteAnalyzer
             try
             {
                 Note.Connect(server, user, pass);
-
-                foreach (String d in Note.ListNetwork(@"\\192.193.10.252\ftproot\xml\"))
+                redeComboBox.Items.Clear();
+                foreach (String d in Note.ListNetwork(pathRaiz))
                 {
                     redeComboBox.Items.Add(d.Substring(d.LastIndexOf("\\") + 1));
                 }
@@ -279,7 +287,7 @@ namespace NoteAnalyzer
         private void RefreshGrid()
         {
             dt.Clear();                        
-            foreach (NotePerState n in NotePerStates)
+            foreach (NotePerState n in NotePerStates.Distinct())
             {
                 dt.Rows.Add(n.numeroLoja, n.nomeLoja, n.dataCriado,
                         n.notaInicial, n.notaFinal, n.quantidadeTotal,
@@ -300,17 +308,19 @@ namespace NoteAnalyzer
                 {
                     estadoComboBox.Items.Add(c.Estado);
                 }
+                LoadYear();
+                LoadMonth();
             }
         }
 
         private void estadoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             run.Clear();
-            if (estadoComboBox.SelectedIndex != -1)
+            /*if (estadoComboBox.SelectedIndex != -1)
             {
                 LoadYear();
                 LoadMonth();
-            }
+            }*/
         }
 
         private void anoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -355,14 +365,16 @@ namespace NoteAnalyzer
         {
             try
             {
-                List<Cliente> clientes = new ClienteDAOImpl().ListPerState(estadoComboBox.SelectedItem.ToString());
+                List<Cliente> clientes = new ClienteDAOImpl().ListPerState(string.Empty);//estadoComboBox.SelectedItem.ToString());
                 if (clientes.Any())
                 {
                     Loading.Visibility = Visibility.Visible;
                     timeNow = DateTime.Now;
                     time.Start();
 
-                    foreach (Cliente c in clientes)
+                    var list = clientes.GroupBy(g => g.NumeroDoCliente).ToList().Select(s => s.First()).ToList();
+
+                    foreach (Cliente c in list)
                     {
                         String rede = redeComboBox.SelectedItem.ToString();
                         String numero = "0" + c.NumeroDoCliente;
@@ -403,12 +415,27 @@ namespace NoteAnalyzer
         {
             List<NoteModel> models = new List<NoteModel>();
 
-            string path = $@"\\192.193.10.252\ftproot\xml\{rede}\{store}\{ano}\{mes}";
-            if (!Directory.Exists(@path))
+            bool result = false;
+            Dispatcher.Invoke(() => {
+                result = serverRadioButton.IsChecked.Value;
+            });
+
+            if (result)
             {
-                return;
+                if (!Directory.Exists(Path.Combine(pathRaiz, rede, store, ano, mes)))
+                {
+                    return;
+                }
+                models = Note.ListNotePerMonthPerStore(pathRaiz, rede, store, ano, mes, type, w);
             }
-            models = Note.ListNotePerMonthPerStore(@"\\192.193.10.252\ftproot\xml\", rede, store, ano, mes, type, w);
+            else
+            {
+                if (!Directory.Exists(Path.Combine(pathRaiz, rede, store)))
+                {
+                    return;
+                }
+                models = Note.ListNotePerMonthPerStore(pathRaiz, rede, store, type, w);
+            }
 
             try
             {
@@ -455,7 +482,7 @@ namespace NoteAnalyzer
                             List<NoteModel> NoteFirst = new List<NoteModel>();
                             try
                             {
-                                NoteFirst = Note.GetFirstNote(@"\\192.193.10.252\ftproot\xml\", rede, store, ano, mes, type);
+                                NoteFirst = Note.GetFirstNote(pathRaiz, rede, store, ano, mes, type);
                             }
                             catch (Exception e)
                             {
@@ -487,7 +514,7 @@ namespace NoteAnalyzer
                             List<NoteModel> NoteFirst = new List<NoteModel>();
                             try
                             {
-                                NoteFirst = Note.GetLastNote(@"\\192.193.10.252\ftproot\xml\", rede, store, ano, mes, type);
+                                NoteFirst = Note.GetLastNote(pathRaiz, rede, store, ano, mes, type);
                             }
                             catch (Exception e)
                             {
@@ -519,7 +546,7 @@ namespace NoteAnalyzer
                         List<NoteModel> NoteFirst = new List<NoteModel>();
                         try
                         {
-                            NoteFirst = Note.GetFirstNote(@"\\192.193.10.252\ftproot\xml\", rede, store, ano, mes, type);
+                            NoteFirst = Note.GetFirstNote(pathRaiz, rede, store, ano, mes, type);
                         }
                         catch (Exception e)
                         {
@@ -530,7 +557,7 @@ namespace NoteAnalyzer
                         List<NoteModel> NoteLast = new List<NoteModel>();
                         try
                         {
-                            NoteLast = Note.GetLastNote(@"\\192.193.10.252\ftproot\xml\", rede, store, ano, mes, type);
+                            NoteLast = Note.GetLastNote(pathRaiz, rede, store, ano, mes, type);
                         }
                         catch (Exception e)
                         {
@@ -592,8 +619,8 @@ namespace NoteAnalyzer
             {
                 if (noteDataGrid.SelectedIndex != -1)
                 {
-
-                    NotePerState note = NotePerStates.Where(s => s.numeroLoja == dt.Rows[noteDataGrid.SelectedIndex][0].ToString()).First();
+                    string numeroLoja = dt.Rows[noteDataGrid.SelectedIndex][0].ToString();
+                    NotePerState note = NotePerStates.Where(s => s.numeroLoja.Equals(numeroLoja)).First();
                     NotesMissing notes = new NotesMissing(note.numerosFaltantes, note.numerosInutilizado, note.numerosCancelado);
                     notes.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                     notes.ShowDialog();
@@ -657,6 +684,12 @@ namespace NoteAnalyzer
                 dt.Rows.Clear();
                 CarregarTabela();
             }
+        }
+
+        private void VerificarTextBox_Click(object sender, RoutedEventArgs e)
+        {
+            pathRaiz = this.pathTextBox.Text;
+            LoadNetwork();
         }
     }
 }

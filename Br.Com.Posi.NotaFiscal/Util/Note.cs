@@ -284,6 +284,41 @@ namespace Br.Com.Posi.NotaFiscal.Util
             return qtsLojas;
         }
 
+        public static int ListaLojaPorAnoMesNovo(string path, int mes, int ano)
+        {
+            if (!Directory.Exists(path))
+            {
+                throw new DirectoryNotFoundException("Diretorio não existe!");
+            }
+
+            int qtsLojas = 0;
+
+
+            foreach (string anos in Directory.GetDirectories(path))
+            {
+                if (int.TryParse(anos.Split('\\').Last(), out int year) && year == ano)
+                {
+                    foreach (string meses in Directory.GetDirectories(anos))
+                    {
+                        if (int.TryParse(meses.Split('\\').Last(), out int month) && month == mes)
+                        {
+                            foreach (string aux in Directory.GetDirectories(meses))
+                            {
+                                if (REDES.Contains(aux.Split('\\').Last()))
+                                {
+                                    foreach (string lojas in Directory.GetDirectories(aux))
+                                    {
+                                        qtsLojas++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return qtsLojas;
+        }
+
         public static int ListaXMLPorAnoMes(string server, int mes, int ano)
         {
             if (!Directory.Exists(server))
@@ -361,6 +396,60 @@ namespace Br.Com.Posi.NotaFiscal.Util
                                     if (int.TryParse(meses.Split('\\').Last(), out int month) && month == mes)
                                     {
                                         string source = Path.Combine(origem, aux.Split('\\').Last(), lojas.Split('\\').Last(), anos.Split('\\').Last(), meses.Split('\\').Last());
+                                        string destiny = Path.Combine(destino, ano.ToString().Split('\\').Last(), mes.ToString().Split('\\').Last(), rede.Split('\\').Last());
+                                        if (!Directory.Exists(destiny))
+                                        {
+                                            Directory.CreateDirectory(destiny);
+                                        }
+
+                                        if (File.Exists(destiny + "\\" + lojas.Split('\\').Last() + ".zip"))
+                                        {
+                                            File.Delete(destiny + "\\" + lojas.Split('\\').Last() + ".zip");
+                                        }
+
+                                        if (!File.Exists(destiny + "\\" + lojas.Split('\\').Last() + ".zip"))
+                                        {
+                                            ZipFile.CreateFromDirectory(source, destiny + "\\" + lojas.Split('\\').Last() + ".zip");
+                                        }
+
+                                        yield return count++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static IEnumerable<int> CompactarPorAnoMesNovo(string origem, string destino, int mes, int ano)
+        {
+            if (!Directory.Exists(origem))
+            {
+                throw new DirectoryNotFoundException("Diretorio não existe!");
+            }
+
+            int count = 0;
+
+            string rede = string.Empty;
+
+
+            foreach (string anos in Directory.GetDirectories(origem))
+            {
+                if (int.TryParse(anos.Split('\\').Last(), out int year) && year == ano)
+                {
+                    foreach (string meses in Directory.GetDirectories(anos))
+                    {
+                        if (int.TryParse(meses.Split('\\').Last(), out int month) && month == mes)
+                        {
+                            foreach (string aux in Directory.GetDirectories(meses))
+                            {
+                                if (REDES.Contains(aux.Split('\\').Last()))
+                                {
+                                    rede = aux;
+                                    foreach (string lojas in Directory.GetDirectories(aux))
+                                    {
+                                        string source = Path.Combine(origem, anos.Split('\\').Last(), meses.Split('\\').Last(), aux.Split('\\').Last(), lojas.Split('\\').Last());
                                         string destiny = Path.Combine(destino, ano.ToString().Split('\\').Last(), mes.ToString().Split('\\').Last(), rede.Split('\\').Last());
                                         if (!Directory.Exists(destiny))
                                         {

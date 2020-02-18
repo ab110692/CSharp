@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Br.Com.Posi.API.Facebook;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Br.Com.Posi.API.Facebook;
 
 namespace Br.Com.Posi.Avarc.Web.Controllers
 {

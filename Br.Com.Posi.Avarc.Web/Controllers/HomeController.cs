@@ -12,9 +12,15 @@ namespace Br.Com.Posi.Avarc.Web.Controllers
         private string appId = "179540646671865";
         private string secredId = "cbbf3bf5cb201267ffe9f5971f2fd223";
 
-        public ActionResult Index()
+        public ActionResult Index(string code)
         {
             ViewBag.UrlFb = FacebookManager.GetInstance().Login(appId, secredId);
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                Console.WriteLine(code);
+            }
+
             return View();
         }
 
@@ -30,6 +36,11 @@ namespace Br.Com.Posi.Avarc.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public string Teste()
+        {
+            return "[{ json }]";
         }
     }
 }

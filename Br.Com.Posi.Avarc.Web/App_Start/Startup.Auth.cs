@@ -6,6 +6,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Br.Com.Posi.Avarc.Web.Models;
+using System.Web.Http.Dispatcher;
+using Microsoft.AspNet.WebHooks;
+using System.Web.Http;
 
 namespace Br.Com.Posi.Avarc.Web
 {
@@ -63,6 +66,30 @@ namespace Br.Com.Posi.Avarc.Web
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            // Configure Web API for self-host. 
+            HttpConfiguration config = new HttpConfiguration();
+
+            // Set the assembly resolver so that WebHooks receiver controller is loaded.
+            WebHookAssemblyResolver assemblyResolver = new WebHookAssemblyResolver();
+            config.Services.Replace(typeof(IAssembliesResolver), assemblyResolver);
+
+            // Web API routes
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            app.UseWebApi(config);
+
+            // Initialize Custom WebHook receiver
+            config.InitializeReceiveCustomWebHooks();
+
+            config.InitializeReceiveGenericJsonWebHooks();
+            
         }
     }
 }
